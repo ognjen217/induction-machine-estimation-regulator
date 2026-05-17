@@ -1,0 +1,27 @@
+[
+   {
+      "directory" : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control\" -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/device\" -I\"C:/ti/C2000Ware_26_00_00_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/ccs2050/ccs/tools/compiler/ti-cgt-c2000_25.11.0.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM/syscfg\" -DF2837xD=1 -xc",
+      "file"      : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM/syscfg/board.c"
+   },
+   {
+      "directory" : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control\" -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/device\" -I\"C:/ti/C2000Ware_26_00_00_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/ccs2050/ccs/tools/compiler/ti-cgt-c2000_25.11.0.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM/syscfg\" -DF2837xD=1 -xc",
+      "file"      : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM/syscfg/c2000ware_libraries.c"
+   },
+   {
+      "directory" : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control\" -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/device\" -I\"C:/ti/C2000Ware_26_00_00_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/ccs2050/ccs/tools/compiler/ti-cgt-c2000_25.11.0.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM/syscfg\" -DF2837xD=1 -xc",
+      "file"      : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/asinhroni_motor.c"
+   },
+   {
+      "directory" : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control\" -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/device\" -I\"C:/ti/C2000Ware_26_00_00_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/ccs2050/ccs/tools/compiler/ti-cgt-c2000_25.11.0.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM/syscfg\" -DF2837xD=1",
+      "file"      : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/device/F2837xD_CodeStartBranch.asm"
+   },
+   {
+      "directory" : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM",
+      "command"   : "clang++ -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control\" -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/device\" -I\"C:/ti/C2000Ware_26_00_00_00/driverlib/f2837xd/driverlib/\" -I\"C:/ti/ccs2050/ccs/tools/compiler/ti-cgt-c2000_25.11.0.LTS/include\" -DDEBUG -DCPU1 -I\"C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/CPU1_RAM/syscfg\" -DF2837xD=1 -xc",
+      "file"      : "C:/Users/Dobrilovic/workspace_ccstheia/Indm_closed_loop_control/device/device.c"
+   }
+]
