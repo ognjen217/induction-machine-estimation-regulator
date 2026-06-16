@@ -1,0 +1,1945 @@
+
+<model_description>
+    <sw_version>2026.1 SP1</sw_version>
+    <hw_properties>
+        <revision>3</revision>
+        <product_id>HIL404</product_id>
+        <configuration_id>5</configuration_id>
+        <device_ao_limit_enable>False</device_ao_limit_enable>
+        <device_id>0</device_id>
+        <spc_out_mem_size>512</spc_out_mem_size>
+        <fw_support_limit>132776452</fw_support_limit>
+        <vhil_adio_loopback>False</vhil_adio_loopback>
+    </hw_properties>
+    <sim_setup>
+        <sim_time_step>5e-07</sim_time_step>
+    </sim_setup>
+    <pesb>
+        <cell>
+            <name>FL.Single Phase Inverter1</name>
+            <type>regular_conv</type>
+            <scm_comp_type>1ph_inverter_r3</scm_comp_type>
+            <site>1</site>
+            <switches_override_settings>False</switches_override_settings>
+            <switches>
+                <cell>
+                    <name>Sa_top</name>
+                    <weights>[3]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sa_bot</name>
+                    <weights>[2]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_top</name>
+                    <weights>[1]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_bot</name>
+                    <weights>[0]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+            </switches>
+        </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1</name>
+            <type>regular_conv</type>
+            <scm_comp_type>1ph_inverter_r3</scm_comp_type>
+            <site>1</site>
+            <switches_override_settings>False</switches_override_settings>
+            <switches>
+                <cell>
+                    <name>Sa_top</name>
+                    <weights>[9]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sa_bot</name>
+                    <weights>[8]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_top</name>
+                    <weights>[7]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_bot</name>
+                    <weights>[6]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+            </switches>
+        </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1</name>
+            <type>regular_conv</type>
+            <scm_comp_type>1ph_inverter_r3</scm_comp_type>
+            <site>2</site>
+            <switches_override_settings>False</switches_override_settings>
+            <switches>
+                <cell>
+                    <name>Sa_top</name>
+                    <weights>[3]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sa_bot</name>
+                    <weights>[2]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_top</name>
+                    <weights>[1]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_bot</name>
+                    <weights>[0]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+            </switches>
+        </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1</name>
+            <type>regular_conv</type>
+            <scm_comp_type>1ph_inverter_r3</scm_comp_type>
+            <site>2</site>
+            <switches_override_settings>False</switches_override_settings>
+            <switches>
+                <cell>
+                    <name>Sa_top</name>
+                    <weights>[9]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sa_bot</name>
+                    <weights>[8]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_top</name>
+                    <weights>[7]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+                <cell>
+                    <name>Sb_bot</name>
+                    <weights>[6]</weights>
+                    <init_sw_override>False</init_sw_override>
+                    <init_sw_override_value>0</init_sw_override_value>
+
+                </cell>
+            </switches>
+        </cell>
+    </pesb>
+    <analog_variables>
+        <cell>
+            <name>Battery1.current</name>
+            <address>7</address>
+            <type>current</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+                <previous_name>Battery1.Ia1</previous_name>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Battery1.Ia1</name>
+            <address>7</address>
+            <type>current</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>Core Coupling 2.L1</name>
+            <address>3</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>Core Coupling 1.L1</name>
+            <address>2</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>VCbat</name>
+            <address>6</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Core Coupling 1.V_cpl_msr_1</name>
+            <address>452</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Core Coupling 2.V_cpl_msr_1</name>
+            <address>456</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Battery1.SOC</name>
+            <address>4</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Battery1.voltage</name>
+            <address>5</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+                <previous_name>Battery1</previous_name>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Battery1</name>
+            <address>5</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>C1</name>
+            <address>1</address>
+            <type>voltage</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>Battery1.Csoc</name>
+            <address>0</address>
+            <type>voltage</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>False</visible>
+        </cell>
+        <cell>
+            <name>FL.PMDC.Va1</name>
+            <address>515</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Core Coupling 1.L2</name>
+            <address>512</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.PMDC.La</name>
+            <address>513</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.PMDC.Va1</name>
+            <address>516</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Core Coupling 1.V_cpl_msr_2</name>
+            <address>960</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>FL.PMDC.Iarm</name>
+            <address>517</address>
+            <type>current</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>FR.PMDC.Iarm</name>
+            <address>518</address>
+            <type>current</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>FR.PMDC.La</name>
+            <address>514</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.Va1</name>
+            <address>1028</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>RL.PMDC.Iarm</name>
+            <address>1029</address>
+            <type>current</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>RL.PMDC.Va1</name>
+            <address>1027</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Core Coupling 2.V_cpl_msr_2</name>
+            <address>1472</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>RL.PMDC.La</name>
+            <address>1025</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.La</name>
+            <address>1026</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.Iarm</name>
+            <address>1030</address>
+            <type>current</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+            <previous_names>
+            </previous_names>
+        </cell>
+        <cell>
+            <name>Core Coupling 2.L2</name>
+            <address>1024</address>
+            <type>current</type>
+            <initial_condition>0.0</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>const_0V</name>
+            <address>34304</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 1</name>
+            <address>34816</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 2</name>
+            <address>34817</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 3</name>
+            <address>34818</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 4</name>
+            <address>34819</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 5</name>
+            <address>34820</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 6</name>
+            <address>34821</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 7</name>
+            <address>34822</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 8</name>
+            <address>34823</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 9</name>
+            <address>34824</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 10</name>
+            <address>34825</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 11</name>
+            <address>34826</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 12</name>
+            <address>34827</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 13</name>
+            <address>34828</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 14</name>
+            <address>34829</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 15</name>
+            <address>34830</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>HIL0 analog input 16</name>
+            <address>34831</address>
+            <type>voltage</type>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+    </analog_variables>
+    <digital_variables>
+        <cell>
+            <name>const_0</name>
+            <address>1</address>
+            </cell>
+        <cell>
+            <name>HIL0 AO flag</name>
+            <address>8</address>
+            </cell>
+        <cell>
+            <name>HIL0 DTV flag</name>
+            <address>9</address>
+            </cell>
+        <cell>
+            <name>HIL0 Capture or Scope Trigger</name>
+            <address>16</address>
+                <previous_names>
+                        <previous_name>HIL0 Capture/Scope Trigger</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>HIL0 Capture/Scope Trigger</name>
+            <address>16</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 1</name>
+            <address>64</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 2</name>
+            <address>65</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 3</name>
+            <address>66</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 4</name>
+            <address>67</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 5</name>
+            <address>68</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 6</name>
+            <address>69</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 7</name>
+            <address>70</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 8</name>
+            <address>71</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 9</name>
+            <address>72</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 10</name>
+            <address>73</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 11</name>
+            <address>74</address>
+            </cell>
+        <cell>
+            <name>HIL0 GPIO 12</name>
+            <address>75</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 1</name>
+            <address>128</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 2</name>
+            <address>129</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 3</name>
+            <address>130</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 4</name>
+            <address>131</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 5</name>
+            <address>132</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 6</name>
+            <address>133</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 7</name>
+            <address>134</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 8</name>
+            <address>135</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 9</name>
+            <address>136</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 10</name>
+            <address>137</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 11</name>
+            <address>138</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 12</name>
+            <address>139</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 13</name>
+            <address>140</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 14</name>
+            <address>141</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 15</name>
+            <address>142</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 16</name>
+            <address>143</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 17</name>
+            <address>144</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 18</name>
+            <address>145</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 19</name>
+            <address>146</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 20</name>
+            <address>147</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 21</name>
+            <address>148</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 22</name>
+            <address>149</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 23</name>
+            <address>150</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 24</name>
+            <address>151</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 25</name>
+            <address>152</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 26</name>
+            <address>153</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 27</name>
+            <address>154</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 28</name>
+            <address>155</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 29</name>
+            <address>156</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 30</name>
+            <address>157</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 31</name>
+            <address>158</address>
+            </cell>
+        <cell>
+            <name>HIL0 digital input 32</name>
+            <address>159</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.Sa_top</name>
+            <address>512</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.Sa_bot</name>
+            <address>513</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.Sb_top</name>
+            <address>514</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.Sb_bot</name>
+            <address>515</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.Sa_top</name>
+            <address>516</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.Sa_bot</name>
+            <address>517</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.Sb_top</name>
+            <address>518</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.Sb_bot</name>
+            <address>519</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.S1</name>
+            <address>512</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.Sa_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.S2</name>
+            <address>513</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.Sa_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.S3</name>
+            <address>514</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.Sb_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.S4</name>
+            <address>515</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.Sb_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.S1</name>
+            <address>516</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.Sa_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.S2</name>
+            <address>517</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.Sa_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.S3</name>
+            <address>518</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.Sb_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.S4</name>
+            <address>519</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.Sb_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.Sa_top</name>
+            <address>520</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.Sa_bot</name>
+            <address>521</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.Sb_top</name>
+            <address>522</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.Sb_bot</name>
+            <address>523</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.Sa_top</name>
+            <address>524</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.Sa_bot</name>
+            <address>525</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.Sb_top</name>
+            <address>526</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.Sb_bot</name>
+            <address>527</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.S1</name>
+            <address>520</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.Sa_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.S2</name>
+            <address>521</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.Sa_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.S3</name>
+            <address>522</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.Sb_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.S4</name>
+            <address>523</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.Sb_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.S1</name>
+            <address>524</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.Sa_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.S2</name>
+            <address>525</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.Sa_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.S3</name>
+            <address>526</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.Sb_top</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.S4</name>
+            <address>527</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.Sb_bot</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator.TOP_1</name>
+            <address>520</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.PWM_Modulator_TOP_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator_TOP_1</name>
+            <address>520</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator.BOT_1</name>
+            <address>521</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.PWM_Modulator_BOT_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator_BOT_1</name>
+            <address>521</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator.TOP_2</name>
+            <address>522</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.PWM_Modulator_TOP_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator_TOP_2</name>
+            <address>522</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator.BOT_2</name>
+            <address>523</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1.PWM_Modulator_BOT_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.PWM_Modulator_BOT_2</name>
+            <address>523</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator.TOP_1</name>
+            <address>516</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.PWM_Modulator_TOP_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator_TOP_1</name>
+            <address>516</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator.BOT_1</name>
+            <address>517</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.PWM_Modulator_BOT_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator_BOT_1</name>
+            <address>517</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator.TOP_2</name>
+            <address>518</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.PWM_Modulator_TOP_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator_TOP_2</name>
+            <address>518</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator.BOT_2</name>
+            <address>519</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1.PWM_Modulator_BOT_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.PWM_Modulator_BOT_2</name>
+            <address>519</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator.TOP_1</name>
+            <address>512</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.PWM_Modulator_TOP_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator_TOP_1</name>
+            <address>512</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator.BOT_1</name>
+            <address>513</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.PWM_Modulator_BOT_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator_BOT_1</name>
+            <address>513</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator.TOP_2</name>
+            <address>514</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.PWM_Modulator_TOP_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator_TOP_2</name>
+            <address>514</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator.BOT_2</name>
+            <address>515</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1.PWM_Modulator_BOT_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.PWM_Modulator_BOT_2</name>
+            <address>515</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator.TOP_1</name>
+            <address>524</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.PWM_Modulator_TOP_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator_TOP_1</name>
+            <address>524</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator.BOT_1</name>
+            <address>525</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.PWM_Modulator_BOT_1</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator_BOT_1</name>
+            <address>525</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator.TOP_2</name>
+            <address>526</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.PWM_Modulator_TOP_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator_TOP_2</name>
+            <address>526</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator.BOT_2</name>
+            <address>527</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1.PWM_Modulator_BOT_2</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.PWM_Modulator_BOT_2</name>
+            <address>527</address>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1.stf</name>
+            <address>1060</address>
+                <previous_names>
+                        <previous_name>FL.Single Phase Inverter1_stf</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FL.Single Phase Inverter1_stf</name>
+            <address>1060</address>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1.stf</name>
+            <address>1061</address>
+                <previous_names>
+                        <previous_name>FR.Single Phase Inverter1_stf</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>FR.Single Phase Inverter1_stf</name>
+            <address>1061</address>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1.stf</name>
+            <address>1084</address>
+                <previous_names>
+                        <previous_name>RL.Single Phase Inverter1_stf</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RL.Single Phase Inverter1_stf</name>
+            <address>1084</address>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1.stf</name>
+            <address>1085</address>
+                <previous_names>
+                        <previous_name>RR.Single Phase Inverter1_stf</previous_name>
+                    </previous_names>
+            </cell>
+        <cell>
+            <name>RR.Single Phase Inverter1_stf</name>
+            <address>1085</address>
+            </cell>
+    </digital_variables>
+    <sources>
+    </sources>
+    <machines>
+    </machines>
+    <pv_panels>
+    </pv_panels>
+    <batteries>
+        <cell>
+            <name>Battery1</name>
+            <address>0</address>
+            <file_name>Lithium-Ion_400.0V_1.2Ah.ibt</file_name>
+            <v_sig_name>Battery1.Cf</v_sig_name>
+            <q_sig_name>Battery1.Csoc</q_sig_name>
+            <default_soc>100.0</default_soc>
+            <e_nom>400.0</e_nom>
+            <q_full>1.2</q_full>
+            <q_scale>1.2e-08</q_scale>
+        </cell>
+    </batteries>
+    <contactors>
+    </contactors>
+    <dtsms>
+        </dtsms>
+    <analog_output_settings>
+    </analog_output_settings>
+    <digital_output_settings>
+    </digital_output_settings>
+    <dtv>
+        <spc_dtv>
+            <cell>
+                <address>4</address>
+                <fqn>FL.Single Phase Inverter1</fqn>
+            </cell>
+            <cell>
+                <address>5</address>
+                <fqn>FR.Single Phase Inverter1</fqn>
+            </cell>
+            <cell>
+                <address>8</address>
+                <fqn>RL.Single Phase Inverter1</fqn>
+            </cell>
+            <cell>
+                <address>9</address>
+                <fqn>RR.Single Phase Inverter1</fqn>
+            </cell>
+        </spc_dtv>
+        <par_dtv>
+        </par_dtv>
+    </dtv>
+
+<!-- ******* SP DATA ******** -->
+
+    <model_properties>
+        <execution_rates>[[[0.0001], [], []]]</execution_rates>
+        <sys_real_type_precision>double</sys_real_type_precision>
+        <user_real_type_precision>double</user_real_type_precision>
+        <sig_stim>off</sig_stim>
+    </model_properties>
+
+    <analog_variables>
+        <cell>
+            <name>FL.PMDC.mech_speed_fr</name>
+            <type>generic</type>
+            <address>16390</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.mu_RR</name>
+            <type>generic</type>
+            <address>16424</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.E_bemf</name>
+            <type>generic</type>
+            <address>16409</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.slip_fl</name>
+            <type>generic</type>
+            <address>16428</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.InA_FR</name>
+            <type>generic</type>
+            <address>16400</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.slip_fr</name>
+            <type>generic</type>
+            <address>16429</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.i_fr</name>
+            <type>generic</type>
+            <address>16412</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.mech_speed_fr</name>
+            <type>generic</type>
+            <address>16414</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.T_load</name>
+            <type>generic</type>
+            <address>16399</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.PMDC.mech_speed_fr</name>
+            <type>generic</type>
+            <address>16398</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.mu_FR</name>
+            <type>generic</type>
+            <address>16422</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.slip_rr</name>
+            <type>generic</type>
+            <address>16431</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.v_wheel_RR</name>
+            <type>generic</type>
+            <address>16436</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.el_torque_fr</name>
+            <type>generic</type>
+            <address>16411</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>omega_TEST</name>
+            <type>generic</type>
+            <address>16417</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.fx_fl</name>
+            <type>generic</type>
+            <address>16420</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.T_load</name>
+            <type>generic</type>
+            <address>16407</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>Vbat</name>
+            <type>generic</type>
+            <address>16416</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.rr_load</name>
+            <type>generic</type>
+            <address>16427</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.InA_FR</name>
+            <type>generic</type>
+            <address>16384</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.mu_FL</name>
+            <type>generic</type>
+            <address>16421</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.PMDC.mech_angle_fr</name>
+            <type>generic</type>
+            <address>16397</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.Va1a2</name>
+            <type>generic</type>
+            <address>16410</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.T_load</name>
+            <type>generic</type>
+            <address>16415</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.PMDC.mech_speed_fr</name>
+            <type>generic</type>
+            <address>16406</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.PMDC.Va1a2</name>
+            <type>generic</type>
+            <address>16394</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.PMDC.Va1a2</name>
+            <type>generic</type>
+            <address>16402</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.PMDC.mech_angle_fr</name>
+            <type>generic</type>
+            <address>16405</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.PMDC.el_torque_fr</name>
+            <type>generic</type>
+            <address>16403</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.fl_Tload</name>
+            <type>generic</type>
+            <address>16418</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.slip_signFL</name>
+            <type>generic</type>
+            <address>16432</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.rl_load</name>
+            <type>generic</type>
+            <address>16426</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.InA_FR</name>
+            <type>generic</type>
+            <address>16408</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.PMDC.E_bemf</name>
+            <type>generic</type>
+            <address>16401</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.InA_FR</name>
+            <type>generic</type>
+            <address>16392</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.PMDC.el_torque_fr</name>
+            <type>generic</type>
+            <address>16395</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.v_vehicle_test</name>
+            <type>generic</type>
+            <address>16433</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RR.PMDC.mech_angle_fr</name>
+            <type>generic</type>
+            <address>16413</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.PMDC.mech_angle_fr</name>
+            <type>generic</type>
+            <address>16389</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.fr_load</name>
+            <type>generic</type>
+            <address>16419</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.PMDC.i_fr</name>
+            <type>generic</type>
+            <address>16388</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.PMDC.i_fr</name>
+            <type>generic</type>
+            <address>16396</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FR.PMDC.E_bemf</name>
+            <type>generic</type>
+            <address>16393</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.slip_rl</name>
+            <type>generic</type>
+            <address>16430</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.PMDC.Va1a2</name>
+            <type>generic</type>
+            <address>16386</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.muscale_test_fl</name>
+            <type>generic</type>
+            <address>16425</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>RL.PMDC.i_fr</name>
+            <type>generic</type>
+            <address>16404</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.T_load</name>
+            <type>generic</type>
+            <address>16391</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.PMDC.E_bemf</name>
+            <type>generic</type>
+            <address>16385</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>FL.PMDC.el_torque_fr</name>
+            <type>generic</type>
+            <address>16387</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.mu_RL</name>
+            <type>generic</type>
+            <address>16423</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.v_wheel_RL</name>
+            <type>generic</type>
+            <address>16435</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.v_wheel_fl</name>
+            <type>generic</type>
+            <address>16437</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+        <cell>
+            <name>road_surface_model_fl.v_wheel_FR</name>
+            <type>generic</type>
+            <address>16434</address>
+            <initial_condition>None</initial_condition>
+            <visible>True</visible>
+        </cell>
+    </analog_variables>
+
+<digital_variables>
+    </digital_variables>
+
+    <tunable_params>
+        <tunable_param>
+            <name>FL.InA</name>
+            <addr>[796917760]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>FR.InA</name>
+            <addr>[796917764]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>RL.InA</name>
+            <addr>[796917768]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>RR.InA</name>
+            <addr>[796917772]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>omega_test</name>
+            <addr>[796917776]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>road_surface_model_fl.mu_scalefl</name>
+            <addr>[796917780]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>road_surface_model_fl.mu_scalefr</name>
+            <addr>[796917784]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>road_surface_model_fl.mu_scalerl</name>
+            <addr>[796917788]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>road_surface_model_fl.mu_scalerr</name>
+            <addr>[796917792]</addr>
+            <min>-1000000.0</min>
+            <max>1000000.0</max>
+            <def_value>0.0</def_value>
+            <unit></unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+        <tunable_param>
+            <name>road_surface_model_fl.v_vehicle</name>
+            <addr>[796917796]</addr>
+            <min>0.0</min>
+            <max>40.0</max>
+            <def_value>5.0</def_value>
+            <unit>m/s</unit>
+            <widget_type>float</widget_type>
+            <format>real</format>
+            <size>1</size>
+            <param_type>scada input</param_type>
+            <cpu_type>user_sp_cpu</cpu_type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rate>0.0001</execution_rate>
+            <visible>True</visible>
+        </tunable_param>
+    </tunable_params>
+
+
+    <dsp_monitors>
+        <monitor>
+            <type>user</type>
+            <cpu_idx>0</cpu_idx>
+            <execution_rates>[0.0001]</execution_rates>
+            <execution_rate_labels>['ER0 (0.0001)']</execution_rate_labels>
+            <timer_counters>[27999]</timer_counters>
+
+            
+        </monitor>
+    </dsp_monitors>
+
+    <sp_compiler_type>gcc</sp_compiler_type>
+
+    <streaming>
+
+
+
+     </streaming>
+
+
+    <adv_c_ext_src>
+        <component>
+            <is_fmi>False</is_fmi>
+            <identifier_name>_road_surface_model_fl_c_function5</identifier_name>
+            <fqn>_road_surface_model_fl_c_function5</fqn>
+            <fqn_original>road_surface_model_fl.C function5</fqn_original>
+            <include_imports>True</include_imports>
+            <library_load_type>Compile-time load</library_load_type>
+            <macros></macros>
+            <library>
+                <win64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </win64>
+                <linux64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </linux64>
+            </library>
+            <additional_sources>
+                <h>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                </h>
+                <c>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </c>
+                <cpp>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </cpp>
+            </additional_sources>
+        </component>
+        <component>
+            <is_fmi>False</is_fmi>
+            <identifier_name>_road_surface_model_fl_c_function3</identifier_name>
+            <fqn>_road_surface_model_fl_c_function3</fqn>
+            <fqn_original>road_surface_model_fl.C function3</fqn_original>
+            <include_imports>True</include_imports>
+            <library_load_type>Compile-time load</library_load_type>
+            <macros></macros>
+            <library>
+                <win64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </win64>
+                <linux64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </linux64>
+            </library>
+            <additional_sources>
+                <h>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                </h>
+                <c>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </c>
+                <cpp>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </cpp>
+            </additional_sources>
+        </component>
+        <component>
+            <is_fmi>False</is_fmi>
+            <identifier_name>_road_surface_model_fl_c_function4</identifier_name>
+            <fqn>_road_surface_model_fl_c_function4</fqn>
+            <fqn_original>road_surface_model_fl.C function4</fqn_original>
+            <include_imports>True</include_imports>
+            <library_load_type>Compile-time load</library_load_type>
+            <macros></macros>
+            <library>
+                <win64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </win64>
+                <linux64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </linux64>
+            </library>
+            <additional_sources>
+                <h>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                </h>
+                <c>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </c>
+                <cpp>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </cpp>
+            </additional_sources>
+        </component>
+        <component>
+            <is_fmi>False</is_fmi>
+            <identifier_name>_road_surface_model_fl_c_function2</identifier_name>
+            <fqn>_road_surface_model_fl_c_function2</fqn>
+            <fqn_original>road_surface_model_fl.C function2</fqn_original>
+            <include_imports>True</include_imports>
+            <library_load_type>Compile-time load</library_load_type>
+            <macros></macros>
+            <library>
+                <win64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </win64>
+                <linux64>
+                    <library_name>False</library_name>
+                    <linking_name>False</linking_name>
+                    <library_path_relative>False</library_path_relative>
+                    <library_path_absolute>False</library_path_absolute>
+                    <include_folder_relative>False</include_folder_relative>
+                    <h_file>False</h_file>
+                    <h_include_folder_relative>False</h_include_folder_relative>
+                </linux64>
+            </library>
+            <additional_sources>
+                <h>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                </h>
+                <c>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </c>
+                <cpp>
+                    <files>set()</files>
+                    <files_relative_paths>set()</files_relative_paths>
+                    <folders_relative_paths>set()</folders_relative_paths>
+                    <o_files>set()</o_files>
+                    <d_files>set()</d_files>
+                </cpp>
+            </additional_sources>
+        </component>
+    </adv_c_ext_src>
+</model_description>

@@ -555,7 +555,7 @@ if (teta >= 2*3.1416)
         ]
 
         component "core/Initial Settings" "Initial Settings1" {
-            analog_outputs = "[\'AO1;..speed_el.value;100.00;0.00;False;-10;10\', \'AO2;..Ref.value;100.00;0.00;False;-10;10\']"
+            analog_outputs = "[\'AO2;..Ref.value;566.67;0.00;True;0;3\', \'AO1;..speed_el.value;566.67;0.00;True;0;3\']"
         }
         [
             position = 9108, 7684
@@ -594,20 +594,20 @@ if (teta >= 2*3.1416)
         component "core/Probe" Ref {
         }
         [
-            position = 7536, 8252
+            position = 7536, 8240
         ]
 
         component "core/Probe" upravljanje {
         }
         [
-            position = 7640, 8560
+            position = 7672, 8564
         ]
 
         component "core/Gain" Gain8 {
             gain = "2*np.pi*50"
         }
         [
-            position = 7528, 8372
+            position = 7528, 8364
         ]
 
         component "core/PWM Analyzer" "PWM Analyzer1" {

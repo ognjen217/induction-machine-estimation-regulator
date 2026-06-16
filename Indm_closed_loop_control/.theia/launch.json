@@ -1,0 +1,36 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ind_mach",
+      "type": "ccs-debug",
+      "request": "launch",
+      "projectInfo": {
+        "name": "ind_mach",
+        "resourceId": "/ind_mach"
+      },
+      "launchSettings": {
+        "coresToLoadForProjectLaunch": [
+          "C28xx_CPU1"
+        ]
+      }
+    },
+    {
+      "name": "pokusaj2222",
+      "type": "ccs-debug",
+      "request": "launch",
+      "projectInfo": {
+        "name": "pokusaj2222",
+        "resourceId": "/pokusaj2222"
+      },
+      "launchSettings": {
+        "coresToLoadForProjectLaunch": [
+          "C28xx_CPU1",
+          "C28xx_CPU2"
+        ]
+      }
+    }
+  ]
+}

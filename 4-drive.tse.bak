@@ -1,0 +1,3659 @@
+version = 4.2
+
+//
+// Saved by sw version: 2026.1 SP1
+//
+
+model "4-drive" {
+    configuration {
+        hil_device = "HIL404"
+        hil_configuration_id = 5
+        simulation_method = bilinear
+        simulation_time_step = auto
+        simulation_discret_scaling = 1.0
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        device_ao_limit_enable = False
+        reset_analog_outputs_on_sim_stop = True
+        reset_analog_outputs_on_sim_stop_mode = Offset values
+        reset_digital_outputs_on_sim_stop = True
+        vhil_adio_loopback = False
+        dma_enable = False
+        cpl_stb = True
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+        user_cpu_part_option = "default"
+        matrix_based_reduction = True
+        cpl_dynamics_analysis = False
+        export_ss_to_pickle = False
+        ground_scope_core = False
+        dss_num_tol = 1e-15
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_term_var_location = "local"
+        cce_directory = ""
+        cce_custom_type_int = ""
+        cce_custom_type_uint = ""
+        cce_custom_type_real = ""
+        tunable_params = "component defined"
+        sp_compiler_type = "C compiler"
+        sig_stim = "off"
+        export_resource_list = ""
+        export_dependency_list = ""
+        excluded_resource_list = ""
+        excluded_component_from_locking_list = ""
+        export_out_file = ""
+        export_lock_top_level = True
+        export_encrypt_library = True
+        export_encrypt_resources = True
+        solver_type = "DAE"
+        integration_method = "BDF"
+        max_sim_step = 1e-4
+        simulation_time = 1.0
+        abs_tol = 1e-3
+        rel_tol = 1e-3
+        init_sim_step = 1e-6
+        r_on_sw = 1e-3
+        v_on_diode = 0.1
+        data_sampling_rate = 0
+        feedthrough_validation_error_level = error
+    }
+
+    component Subsystem Root {
+        component "core/Battery" Battery1 {
+            battery_type = "Lithium-Ion"
+            nominal_voltage = "400"
+            sig_output = "True"
+        }
+        [
+            position = 7112, 7960
+            rotation = right
+            size = 64, 48
+        ]
+
+        component Subsystem FL {
+            layout = dynamic
+            component "core/Single Phase Inverter" "Single Phase Inverter1" {
+                ctrl_src = "Internal modulator"
+                d_time = "1e-6"
+                fvd_def_method = "LUT"
+            }
+            [
+                position = 8076, 8000
+                size = 127, 256
+            ]
+
+            component "core/Constant" En {
+            }
+            [
+                position = 7912, 7816
+            ]
+
+            component "core/Gain" Gain1 {
+                gain = "-1"
+            }
+            [
+                position = 8096, 7772
+                rotation = right
+            ]
+
+            component Subsystem PMDC {
+                layout = dynamic
+                component "core/Current Measurement" Iarm {
+                    sig_output = "True"
+                }
+                [
+                    position = 7512, 8036
+                    size = 64, 32
+                ]
+
+                component "core/Voltage Measurement" Va1 {
+                    sig_output = "True"
+                }
+                [
+                    position = 7580, 8148
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                component "core/Resistor" Ra {
+                    resistance = "Ra"
+                }
+                [
+                    position = 7992, 8080
+                    rotation = right
+                ]
+
+                component "core/Inductor" La {
+                    inductance = "La"
+                }
+                [
+                    position = 7992, 8160
+                    rotation = right
+                ]
+
+                component "core/Gain" Kt {
+                    gain = "Kt"
+                }
+                [
+                    position = 7712, 7932
+                ]
+
+                component "core/Sum" Sum1 {
+                    signs = "+--"
+                }
+                [
+                    position = 8144, 7964
+                ]
+
+                component "core/Gain" Ke {
+                    gain = "Ke"
+                }
+                [
+                    position = 7816, 8244
+                ]
+
+                component "core/Gain" b {
+                    gain = "b"
+                }
+                [
+                    position = 8004, 8000
+                ]
+
+                component "core/Integrator Rollover" "Integrator Rollover1" {
+                }
+                [
+                    position = 8156, 8256
+                ]
+
+                component "core/Gain" J-1 {
+                    gain = "1/J"
+                }
+                [
+                    position = 8296, 7964
+                ]
+
+                component "core/Integrator" IntegratorOmega {
+                    execution_rate = "100e-6"
+                }
+                [
+                    position = 8412, 7964
+                ]
+
+                component "core/Probe" Va1a2 {
+                }
+                [
+                    position = 7732, 8148
+                ]
+
+                component "core/Probe" E_bemf {
+                }
+                [
+                    position = 7904, 8172
+                ]
+
+                component "core/Probe" i_fr {
+                }
+                [
+                    position = 7644, 7984
+                ]
+
+                component "core/Gain" Gain {
+                    gain = "0"
+                }
+                [
+                    position = 7820, 7824
+                ]
+
+                component "core/Probe" el_torque_fr {
+                }
+                [
+                    position = 8632, 8072
+                ]
+
+                component "core/Probe" mech_speed_fr {
+                }
+                [
+                    position = 8632, 8140
+                ]
+
+                component "core/Probe" mech_angle_fr {
+                }
+                [
+                    position = 8632, 8208
+                ]
+
+                component "core/Signal Controlled Voltage Source" Ebemf {
+                }
+                [
+                    position = 7992, 8260
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                port A1 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8036
+                ]
+
+                port A2 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8244
+                ]
+
+                port Tload {
+                    position = auto:auto
+                    kind = sp
+                    direction =  out
+                    sp_type {
+                        default = auto
+                        readonly = True
+                    }
+                }
+                [
+                    position = 7376, 7824
+                ]
+
+                tag Goto1 {
+                    value = "omega_FL"
+                    scope = global
+                    kind = sp
+                    direction = in
+                }
+                [
+                    position = 8188, 7656
+                    size = 60, 20
+                ]
+
+                junction Junction2 pe
+                [
+                    position = 7580, 8036
+                ]
+
+                junction Junction5 sp
+                [
+                    position = 8092, 8352
+                ]
+
+                junction Junction7 sp
+                [
+                    position = 7776, 8244
+                ]
+
+                junction Junction8 sp
+                [
+                    position = 7860, 8244
+                ]
+
+                junction Junction9 sp
+                [
+                    position = 7600, 7932
+                ]
+
+                junction Junction14 sp
+                [
+                    position = 7944, 8000
+                ]
+
+                junction Junction15 sp
+                [
+                    position = 7940, 8112
+                ]
+
+                junction Junction11 sp
+                [
+                    position = 8064, 7932
+                ]
+
+                junction Junction12 pe
+                [
+                    position = 7580, 8244
+                ]
+
+                comment Comment1 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Te</p></body></html> ENDCOMMENT 
+                [
+                    position = 7888, 7908
+                ]
+
+                comment Comment2 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Tload </p></body></html> ENDCOMMENT 
+                [
+                    position = 7620, 7812
+                ]
+
+                comment Comment3 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">omega</p></body></html> ENDCOMMENT 
+                [
+                    position = 7856, 8100
+                ]
+
+                comment Comment4 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">e_bemf</p></body></html> ENDCOMMENT 
+                [
+                    position = 7868, 8220
+                ]
+
+                connect Ra.n_node La.p_node as Connection38
+                connect Junction2 Ra.p_node as Connection39
+                connect Junction2 Va1.p_node as Connection40
+                connect Junction2 Iarm.n_node as Connection41
+                connect b.out Sum1.in2 as Connection59
+                connect Sum1.out J-1.in as Connection65
+                connect J-1.out IntegratorOmega.in as Connection66
+                connect IntegratorOmega.out Junction5 as Connection68
+                [
+                    breakpoints = 8484, 7964; 8484, 8352
+                ]
+                connect A1 Iarm.p_node as Connection74
+                connect Va1.out Va1a2.in as Connection76
+                connect Junction5 Junction7 as Connection79
+                [
+                    breakpoints = 7756, 8352
+                ]
+                connect Junction7 Ke.in as Connection80
+                connect Ke.out Junction8 as Connection82
+                connect E_bemf.in Junction8 as Connection84
+                connect Iarm.out Junction9 as Connection85
+                connect b.in Junction14 as Connection106
+                connect Junction9 Kt.in as Connection86
+                connect i_fr.in Junction9 as Connection87
+                connect Goto1 Junction14 as Connection108
+                connect "Integrator Rollover1.input" Junction5 as Connection89
+                [
+                    breakpoints = 8092, 8256
+                ]
+                connect Tload Gain.in as Connection109
+                connect Gain.out Sum1.in1 as Connection110
+                connect Junction8 Ebemf.in as Connection111
+                [
+                    breakpoints = 7952, 8244; 8024, 8244
+                ]
+                connect Junction14 Junction15 as Connection112
+                [
+                    breakpoints = 7940, 8000
+                ]
+                connect "Integrator Rollover1.out" mech_angle_fr.in as Connection90
+                [
+                    breakpoints = 8452, 8216
+                ]
+                connect Junction15 Junction7 as Connection113
+                [
+                    breakpoints = 7940, 8120; 7776, 8120
+                ]
+                connect mech_speed_fr.in Junction15 as Connection114
+                connect Sum1.in Junction11 as Connection94
+                connect Junction11 Kt.out as Connection95
+                [
+                    breakpoints = 8064, 7932
+                ]
+                connect el_torque_fr.in Junction11 as Connection96
+                [
+                    breakpoints = 8512, 7876; 8512, 7852; 8064, 7852
+                ]
+                connect Ebemf.p_node La.n_node as Connection99
+                connect Va1.n_node Junction12 as Connection100
+                connect Junction12 A2 as Connection101
+                [
+                    breakpoints = 7364, 8244
+                ]
+                connect Ebemf.n_node Junction12 as Connection102
+            }
+            [
+                position = 8692, 7996
+                size = 256, 192
+            ]
+
+            component "core/SCADA Input" InA {
+                unit = ""
+            }
+            [
+                position = 7908, 7716
+            ]
+
+            component "core/Probe" InA_FR {
+            }
+            [
+                position = 8252, 7732
+            ]
+
+            component "core/Probe" T_load {
+            }
+            [
+                position = 8600, 7760
+            ]
+
+            port DC+ {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7808, 7904
+            ]
+
+            port DC- {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7808, 8096
+            ]
+
+            port load {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7784, 7560
+            ]
+
+            junction Junction1 sp
+            [
+                position = 8064, 7724
+            ]
+
+            junction Junction2 sp
+            [
+                position = 8056, 7716
+            ]
+
+            junction Junction3 sp
+            [
+                position = 8504, 7760
+            ]
+
+            connect En.out "Single Phase Inverter1.En" as Connection7
+            connect Gain1.out "Single Phase Inverter1.InB" as Connection9
+            connect "Single Phase Inverter1.neg_out" DC- as Connection35
+            [
+                breakpoints = 7896, 8096
+            ]
+            connect "Single Phase Inverter1.pos_out" DC+ as Connection34
+            [
+                breakpoints = 7896, 7904
+            ]
+            connect "Single Phase Inverter1.a_in" PMDC.A1 as Connection36
+            [
+                breakpoints = 8384, 7904; 8384, 7992; 8548, 7992
+            ]
+            connect "Single Phase Inverter1.b_in" PMDC.A2 as Connection37
+            [
+                breakpoints = 8384, 8096; 8384, 8068
+            ]
+            connect "Single Phase Inverter1.InA" Junction1 as Connection41
+            [
+                breakpoints = 8068, 7800
+            ]
+            connect Junction1 Gain1.in as Connection42
+            [
+                breakpoints = 8068, 7724; 8064, 7724
+            ]
+            connect InA.out Junction2 as Connection44
+            connect Junction2 Junction1 as Connection45
+            connect InA_FR.in Junction2 as Connection46
+            [
+                breakpoints = 8220, 7700; 8056, 7700
+            ]
+            connect PMDC.Tload Junction3 as Connection51
+            [
+                breakpoints = 8548, 7916; 8504, 7916; 8504, 7772
+            ]
+            connect Junction3 T_load.in as Connection52
+            connect load Junction3 as Connection53
+        }
+        [
+            position = 8240, 8332
+            size = 112, 64
+        ]
+
+        component "core/Capacitor" C1 {
+            capacitance = "1e-3"
+        }
+        [
+            position = 7280, 7960
+            rotation = right
+        ]
+
+        component "core/Voltage Measurement" VCbat {
+            sig_output = "True"
+        }
+        [
+            position = 7520, 7952
+            rotation = right
+            size = 64, 32
+        ]
+
+        component Subsystem RL {
+            layout = dynamic
+            component "core/Single Phase Inverter" "Single Phase Inverter1" {
+                ctrl_src = "Internal modulator"
+                d_time = "1e-6"
+                fvd_def_method = "LUT"
+            }
+            [
+                position = 7624, 7800
+                size = 127, 256
+            ]
+
+            component "core/Constant" En {
+            }
+            [
+                position = 7420, 7616
+            ]
+
+            component "core/Gain" Gain1 {
+                gain = "-1"
+            }
+            [
+                position = 7644, 7572
+                rotation = right
+            ]
+
+            component Subsystem PMDC {
+                layout = dynamic
+                component "core/Current Measurement" Iarm {
+                    sig_output = "True"
+                }
+                [
+                    position = 7512, 8036
+                    size = 64, 32
+                ]
+
+                component "core/Voltage Measurement" Va1 {
+                    sig_output = "True"
+                }
+                [
+                    position = 7580, 8148
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                component "core/Resistor" Ra {
+                    resistance = "Ra"
+                }
+                [
+                    position = 7992, 8080
+                    rotation = right
+                ]
+
+                component "core/Inductor" La {
+                    inductance = "La"
+                }
+                [
+                    position = 7992, 8160
+                    rotation = right
+                ]
+
+                component "core/Gain" Kt {
+                    gain = "Kt"
+                }
+                [
+                    position = 7712, 7932
+                ]
+
+                component "core/Sum" Sum1 {
+                    signs = "+--"
+                }
+                [
+                    position = 8144, 7964
+                ]
+
+                component "core/Gain" Ke {
+                    gain = "Ke"
+                }
+                [
+                    position = 7816, 8244
+                ]
+
+                component "core/Gain" b {
+                    gain = "b"
+                }
+                [
+                    position = 8004, 8000
+                ]
+
+                component "core/Integrator Rollover" "Integrator Rollover1" {
+                }
+                [
+                    position = 8156, 8256
+                ]
+
+                component "core/Gain" J-1 {
+                    gain = "1/J"
+                }
+                [
+                    position = 8296, 7964
+                ]
+
+                component "core/Integrator" IntegratorOmega {
+                    execution_rate = "100e-6"
+                }
+                [
+                    position = 8412, 7964
+                ]
+
+                component "core/Probe" Va1a2 {
+                }
+                [
+                    position = 7732, 8148
+                ]
+
+                component "core/Probe" E_bemf {
+                }
+                [
+                    position = 7904, 8172
+                ]
+
+                component "core/Probe" i_fr {
+                }
+                [
+                    position = 7644, 7984
+                ]
+
+                component "core/Gain" Gain1 {
+                    gain = "0"
+                }
+                [
+                    position = 7764, 7824
+                ]
+
+                component "core/Probe" el_torque_fr {
+                }
+                [
+                    position = 8632, 8072
+                ]
+
+                component "core/Probe" mech_speed_fr {
+                }
+                [
+                    position = 8632, 8140
+                ]
+
+                component "core/Probe" mech_angle_fr {
+                }
+                [
+                    position = 8632, 8208
+                ]
+
+                component "core/Signal Controlled Voltage Source" Ebemf {
+                }
+                [
+                    position = 7992, 8260
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                port A1 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8036
+                ]
+
+                port A2 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8244
+                ]
+
+                port Tload {
+                    position = auto:auto
+                    kind = sp
+                    direction =  out
+                    sp_type {
+                        default = auto
+                        readonly = True
+                    }
+                }
+                [
+                    position = 7376, 7824
+                ]
+
+                tag Goto1 {
+                    value = "omega_RL"
+                    scope = global
+                    kind = sp
+                    direction = in
+                }
+                [
+                    position = 8244, 7716
+                    size = 60, 20
+                ]
+
+                junction Junction2 pe
+                [
+                    position = 7580, 8036
+                ]
+
+                junction Junction5 sp
+                [
+                    position = 8092, 8352
+                ]
+
+                junction Junction7 sp
+                [
+                    position = 7776, 8244
+                ]
+
+                junction Junction8 sp
+                [
+                    position = 7860, 8244
+                ]
+
+                junction Junction9 sp
+                [
+                    position = 7600, 7932
+                ]
+
+                junction Junction14 sp
+                [
+                    position = 7936, 8000
+                ]
+
+                junction Junction15 sp
+                [
+                    position = 7968, 8000
+                ]
+
+                junction Junction11 sp
+                [
+                    position = 8064, 7932
+                ]
+
+                junction Junction12 pe
+                [
+                    position = 7580, 8244
+                ]
+
+                comment Comment1 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Te</p></body></html> ENDCOMMENT 
+                [
+                    position = 7888, 7908
+                ]
+
+                comment Comment2 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Tload </p></body></html> ENDCOMMENT 
+                [
+                    position = 7620, 7812
+                ]
+
+                comment Comment3 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">omega</p></body></html> ENDCOMMENT 
+                [
+                    position = 7852, 7984
+                ]
+
+                comment Comment4 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">e_bemf</p></body></html> ENDCOMMENT 
+                [
+                    position = 7868, 8220
+                ]
+
+                connect Ra.n_node La.p_node as Connection38
+                connect Junction2 Ra.p_node as Connection39
+                connect Junction2 Va1.p_node as Connection40
+                connect Junction2 Iarm.n_node as Connection41
+                connect b.out Sum1.in2 as Connection59
+                connect Sum1.out J-1.in as Connection65
+                connect J-1.out IntegratorOmega.in as Connection66
+                connect IntegratorOmega.out Junction5 as Connection68
+                [
+                    breakpoints = 8484, 7964; 8484, 8352
+                ]
+                connect A1 Iarm.p_node as Connection74
+                connect Va1.out Va1a2.in as Connection76
+                connect Junction5 Junction7 as Connection79
+                [
+                    breakpoints = 7756, 8352
+                ]
+                connect Junction7 Ke.in as Connection80
+                connect Ke.out Junction8 as Connection82
+                connect E_bemf.in Junction8 as Connection84
+                connect Iarm.out Junction9 as Connection85
+                connect Junction9 Kt.in as Connection86
+                connect i_fr.in Junction9 as Connection87
+                connect Junction14 Junction7 as Connection107
+                [
+                    breakpoints = 7936, 8132; 7776, 8132
+                ]
+                connect Goto1 Junction14 as Connection108
+                connect "Integrator Rollover1.input" Junction5 as Connection89
+                [
+                    breakpoints = 8092, 8256
+                ]
+                connect Tload Gain1.in as Connection109
+                connect Gain1.out Sum1.in1 as Connection110
+                connect Junction8 Ebemf.in as Connection111
+                [
+                    breakpoints = 7952, 8244; 8024, 8244
+                ]
+                connect "Integrator Rollover1.out" mech_angle_fr.in as Connection90
+                [
+                    breakpoints = 8452, 8216
+                ]
+                connect b.in Junction15 as Connection112
+                connect Junction15 Junction14 as Connection113
+                connect mech_speed_fr.in Junction15 as Connection114
+                connect Sum1.in Junction11 as Connection94
+                connect Junction11 Kt.out as Connection95
+                [
+                    breakpoints = 8064, 7932
+                ]
+                connect el_torque_fr.in Junction11 as Connection96
+                [
+                    breakpoints = 8512, 7876; 8512, 7852; 8064, 7852
+                ]
+                connect Ebemf.p_node La.n_node as Connection99
+                connect Va1.n_node Junction12 as Connection100
+                connect Junction12 A2 as Connection101
+                [
+                    breakpoints = 7364, 8244
+                ]
+                connect Ebemf.n_node Junction12 as Connection102
+            }
+            [
+                position = 8240, 7796
+                size = 256, 192
+            ]
+
+            component "core/SCADA Input" InA {
+                unit = ""
+            }
+            [
+                position = 7456, 7516
+            ]
+
+            component "core/Probe" InA_FR {
+            }
+            [
+                position = 7800, 7532
+            ]
+
+            component "core/Probe" T_load {
+            }
+            [
+                position = 8208, 7504
+            ]
+
+            port DC+ {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7356, 7704
+            ]
+
+            port DC- {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7356, 7896
+            ]
+
+            port load {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7444, 7388
+            ]
+
+            junction Junction1 sp
+            [
+                position = 7612, 7524
+            ]
+
+            junction Junction2 sp
+            [
+                position = 7604, 7516
+            ]
+
+            junction Junction3 sp
+            [
+                position = 8052, 7504
+            ]
+
+            connect En.out "Single Phase Inverter1.En" as Connection7
+            connect Gain1.out "Single Phase Inverter1.InB" as Connection9
+            connect "Single Phase Inverter1.neg_out" DC- as Connection35
+            [
+                breakpoints = 7444, 7896
+            ]
+            connect "Single Phase Inverter1.pos_out" DC+ as Connection34
+            [
+                breakpoints = 7444, 7704
+            ]
+            connect "Single Phase Inverter1.a_in" PMDC.A1 as Connection36
+            [
+                breakpoints = 7932, 7704; 7932, 7796
+            ]
+            connect "Single Phase Inverter1.b_in" PMDC.A2 as Connection37
+            [
+                breakpoints = 7932, 7896; 7932, 7868
+            ]
+            connect "Single Phase Inverter1.InA" Junction1 as Connection41
+            [
+                breakpoints = 7616, 7600
+            ]
+            connect Junction1 Gain1.in as Connection42
+            [
+                breakpoints = 7616, 7524; 7612, 7524
+            ]
+            connect InA.out Junction2 as Connection44
+            connect Junction2 Junction1 as Connection45
+            connect InA_FR.in Junction2 as Connection46
+            [
+                breakpoints = 7768, 7500; 7604, 7500
+            ]
+            connect T_load.in Junction3 as Connection55
+            connect Junction3 PMDC.Tload as Connection56
+            [
+                breakpoints = 8052, 7508; 8052, 7724
+            ]
+            connect load Junction3 as Connection57
+        }
+        [
+            position = 8208, 7976
+            size = 112, 64
+        ]
+
+        component Subsystem RR {
+            layout = dynamic
+            component "core/Single Phase Inverter" "Single Phase Inverter1" {
+                ctrl_src = "Internal modulator"
+                d_time = "1e-6"
+                fvd_def_method = "LUT"
+            }
+            [
+                position = 7920, 7744
+                size = 127, 256
+            ]
+
+            component "core/Constant" En {
+            }
+            [
+                position = 7756, 7560
+            ]
+
+            component "core/Gain" Gain1 {
+                gain = "-1"
+            }
+            [
+                position = 7940, 7516
+                rotation = right
+            ]
+
+            component Subsystem PMDC {
+                layout = dynamic
+                component "core/Current Measurement" Iarm {
+                    sig_output = "True"
+                }
+                [
+                    position = 7512, 8036
+                    size = 64, 32
+                ]
+
+                component "core/Voltage Measurement" Va1 {
+                    sig_output = "True"
+                }
+                [
+                    position = 7580, 8148
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                component "core/Resistor" Ra {
+                    resistance = "Ra"
+                }
+                [
+                    position = 7992, 8080
+                    rotation = right
+                ]
+
+                component "core/Inductor" La {
+                    inductance = "La"
+                }
+                [
+                    position = 7992, 8160
+                    rotation = right
+                ]
+
+                component "core/Gain" Kt {
+                    gain = "Kt"
+                }
+                [
+                    position = 7712, 7932
+                ]
+
+                component "core/Sum" Sum1 {
+                    signs = "+--"
+                }
+                [
+                    position = 8144, 7964
+                ]
+
+                component "core/Gain" Ke {
+                    gain = "Ke"
+                }
+                [
+                    position = 7816, 8244
+                ]
+
+                component "core/Gain" b {
+                    gain = "b"
+                }
+                [
+                    position = 8004, 8000
+                ]
+
+                component "core/Integrator Rollover" "Integrator Rollover1" {
+                }
+                [
+                    position = 8156, 8256
+                ]
+
+                component "core/Gain" J-1 {
+                    gain = "1/J"
+                }
+                [
+                    position = 8296, 7964
+                ]
+
+                component "core/Integrator" IntegratorOmega {
+                    execution_rate = "100e-6"
+                }
+                [
+                    position = 8412, 7964
+                ]
+
+                component "core/Probe" Va1a2 {
+                }
+                [
+                    position = 7732, 8148
+                ]
+
+                component "core/Probe" E_bemf {
+                }
+                [
+                    position = 7904, 8172
+                ]
+
+                component "core/Probe" i_fr {
+                }
+                [
+                    position = 7644, 7984
+                ]
+
+                component "core/Probe" el_torque_fr {
+                }
+                [
+                    position = 8632, 8072
+                ]
+
+                component "core/Probe" mech_speed_fr {
+                }
+                [
+                    position = 8632, 8140
+                ]
+
+                component "core/Probe" mech_angle_fr {
+                }
+                [
+                    position = 8632, 8208
+                ]
+
+                component "core/Signal Controlled Voltage Source" Ebemf {
+                }
+                [
+                    position = 7992, 8260
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                component "core/Gain" Gain {
+                    gain = "0"
+                }
+                [
+                    position = 7776, 7824
+                ]
+
+                port A1 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8036
+                ]
+
+                port A2 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8244
+                ]
+
+                port Tload {
+                    position = auto:auto
+                    kind = sp
+                    direction =  out
+                    sp_type {
+                        default = auto
+                        readonly = True
+                    }
+                }
+                [
+                    position = 7376, 7824
+                ]
+
+                tag Goto1 {
+                    value = "omega_RR"
+                    scope = global
+                    kind = sp
+                    direction = in
+                }
+                [
+                    position = 8252, 7724
+                    size = 60, 20
+                ]
+
+                junction Junction2 pe
+                [
+                    position = 7580, 8036
+                ]
+
+                junction Junction5 sp
+                [
+                    position = 8092, 8352
+                ]
+
+                junction Junction7 sp
+                [
+                    position = 7776, 8244
+                ]
+
+                junction Junction8 sp
+                [
+                    position = 7860, 8244
+                ]
+
+                junction Junction9 sp
+                [
+                    position = 7600, 7932
+                ]
+
+                junction Junction14 sp
+                [
+                    position = 7932, 8000
+                ]
+
+                junction Junction11 sp
+                [
+                    position = 8064, 7932
+                ]
+
+                junction Junction12 pe
+                [
+                    position = 7580, 8244
+                ]
+
+                junction Junction13 sp
+                [
+                    position = 8024, 8244
+                ]
+
+                comment Comment1 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Te</p></body></html> ENDCOMMENT 
+                [
+                    position = 7888, 7908
+                ]
+
+                comment Comment2 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Tload </p></body></html> ENDCOMMENT 
+                [
+                    position = 7620, 7812
+                ]
+
+                comment Comment3 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">omega</p></body></html> ENDCOMMENT 
+                [
+                    position = 7852, 7984
+                ]
+
+                comment Comment4 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">e_bemf</p></body></html> ENDCOMMENT 
+                [
+                    position = 7868, 8220
+                ]
+
+                connect Ra.n_node La.p_node as Connection38
+                connect Junction2 Ra.p_node as Connection39
+                connect Junction2 Va1.p_node as Connection40
+                connect Junction2 Iarm.n_node as Connection41
+                connect b.out Sum1.in2 as Connection59
+                connect Sum1.out J-1.in as Connection65
+                connect J-1.out IntegratorOmega.in as Connection66
+                connect IntegratorOmega.out Junction5 as Connection68
+                [
+                    breakpoints = 8484, 7964; 8484, 8352
+                ]
+                connect A1 Iarm.p_node as Connection74
+                connect Va1.out Va1a2.in as Connection76
+                connect Junction5 Junction7 as Connection79
+                [
+                    breakpoints = 7756, 8352
+                ]
+                connect Junction7 Ke.in as Connection80
+                connect Ke.out Junction8 as Connection82
+                connect E_bemf.in Junction8 as Connection84
+                connect Iarm.out Junction9 as Connection85
+                connect Junction9 Kt.in as Connection86
+                connect b.in Junction14 as Connection106
+                connect i_fr.in Junction9 as Connection87
+                connect Junction14 Junction7 as Connection107
+                connect Goto1 Junction14 as Connection108
+                connect "Integrator Rollover1.input" Junction5 as Connection89
+                [
+                    breakpoints = 8092, 8256
+                ]
+                connect "Integrator Rollover1.out" mech_angle_fr.in as Connection90
+                [
+                    breakpoints = 8452, 8216
+                ]
+                connect Sum1.in Junction11 as Connection94
+                connect Junction11 Kt.out as Connection95
+                [
+                    breakpoints = 8064, 7932
+                ]
+                connect el_torque_fr.in Junction11 as Connection96
+                [
+                    breakpoints = 8512, 7876; 8512, 7852; 8064, 7852
+                ]
+                connect Ebemf.p_node La.n_node as Connection99
+                connect Va1.n_node Junction12 as Connection100
+                connect Junction12 A2 as Connection101
+                [
+                    breakpoints = 7364, 8244
+                ]
+                connect Ebemf.n_node Junction12 as Connection102
+                connect Junction8 Junction13 as Connection103
+                [
+                    breakpoints = 7952, 8244
+                ]
+                connect Junction13 mech_speed_fr.in as Connection104
+                [
+                    breakpoints = 8088, 8192
+                ]
+                connect Ebemf.in Junction13 as Connection105
+                connect Tload Gain.in as Connection109
+                connect Gain.out Sum1.in1 as Connection110
+            }
+            [
+                position = 8536, 7740
+                size = 256, 192
+            ]
+
+            component "core/SCADA Input" InA {
+                unit = ""
+            }
+            [
+                position = 7752, 7460
+            ]
+
+            component "core/Probe" InA_FR {
+            }
+            [
+                position = 8096, 7476
+            ]
+
+            component "core/Probe" T_load {
+            }
+            [
+                position = 8468, 7440
+            ]
+
+            port DC+ {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7652, 7648
+            ]
+
+            port DC- {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7652, 7840
+            ]
+
+            port load {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7588, 7328
+            ]
+
+            junction Junction1 sp
+            [
+                position = 7908, 7468
+            ]
+
+            junction Junction2 sp
+            [
+                position = 7900, 7460
+            ]
+
+            junction Junction3 sp
+            [
+                position = 8344, 7440
+            ]
+
+            connect En.out "Single Phase Inverter1.En" as Connection7
+            connect Gain1.out "Single Phase Inverter1.InB" as Connection9
+            connect "Single Phase Inverter1.neg_out" DC- as Connection35
+            [
+                breakpoints = 7740, 7840
+            ]
+            connect "Single Phase Inverter1.pos_out" DC+ as Connection34
+            [
+                breakpoints = 7740, 7648
+            ]
+            connect "Single Phase Inverter1.a_in" PMDC.A1 as Connection36
+            [
+                breakpoints = 8228, 7648; 8228, 7740
+            ]
+            connect "Single Phase Inverter1.b_in" PMDC.A2 as Connection37
+            [
+                breakpoints = 8228, 7840; 8228, 7812
+            ]
+            connect "Single Phase Inverter1.InA" Junction1 as Connection41
+            [
+                breakpoints = 7912, 7544
+            ]
+            connect Junction1 Gain1.in as Connection42
+            [
+                breakpoints = 7912, 7468; 7908, 7468
+            ]
+            connect InA.out Junction2 as Connection44
+            connect Junction2 Junction1 as Connection45
+            connect InA_FR.in Junction2 as Connection46
+            [
+                breakpoints = 8064, 7444; 7900, 7444
+            ]
+            connect T_load.in Junction3 as Connection51
+            connect Junction3 PMDC.Tload as Connection52
+            [
+                breakpoints = 8348, 7440; 8348, 7668
+            ]
+            connect load Junction3 as Connection53
+        }
+        [
+            position = 8472, 7968
+            size = 112, 64
+        ]
+
+        component Subsystem FR {
+            layout = dynamic
+            component "core/Single Phase Inverter" "Single Phase Inverter1" {
+                ctrl_src = "Internal modulator"
+                d_time = "1e-6"
+                fvd_def_method = "LUT"
+            }
+            [
+                position = 7948, 8060
+                size = 127, 256
+            ]
+
+            component "core/Constant" En {
+            }
+            [
+                position = 7784, 7876
+            ]
+
+            component "core/Gain" Gain1 {
+                gain = "-1"
+            }
+            [
+                position = 7968, 7832
+                rotation = right
+            ]
+
+            component Subsystem PMDC {
+                layout = dynamic
+                component "core/Current Measurement" Iarm {
+                    sig_output = "True"
+                }
+                [
+                    position = 7512, 8036
+                    size = 64, 32
+                ]
+
+                component "core/Voltage Measurement" Va1 {
+                    sig_output = "True"
+                }
+                [
+                    position = 7580, 8148
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                component "core/Resistor" Ra {
+                    resistance = "Ra"
+                }
+                [
+                    position = 7992, 8080
+                    rotation = right
+                ]
+
+                component "core/Inductor" La {
+                    inductance = "La"
+                }
+                [
+                    position = 7992, 8160
+                    rotation = right
+                ]
+
+                component "core/Gain" Kt {
+                    gain = "Kt"
+                }
+                [
+                    position = 7712, 7932
+                ]
+
+                component "core/Sum" Sum1 {
+                    signs = "+--"
+                }
+                [
+                    position = 8144, 7964
+                ]
+
+                component "core/Gain" Ke {
+                    gain = "Ke"
+                }
+                [
+                    position = 7816, 8244
+                ]
+
+                component "core/Gain" b {
+                    gain = "b"
+                }
+                [
+                    position = 8044, 8004
+                ]
+
+                component "core/Integrator Rollover" "Integrator Rollover1" {
+                }
+                [
+                    position = 8156, 8256
+                ]
+
+                component "core/Gain" J-1 {
+                    gain = "1/J"
+                }
+                [
+                    position = 8296, 7964
+                ]
+
+                component "core/Integrator" IntegratorOmega {
+                    execution_rate = "100e-6"
+                }
+                [
+                    position = 8412, 7964
+                ]
+
+                component "core/Probe" Va1a2 {
+                }
+                [
+                    position = 7732, 8148
+                ]
+
+                component "core/Probe" E_bemf {
+                }
+                [
+                    position = 7904, 8172
+                ]
+
+                component "core/Probe" i_fr {
+                }
+                [
+                    position = 7644, 7984
+                ]
+
+                component "core/Probe" el_torque_fr {
+                }
+                [
+                    position = 8632, 8072
+                ]
+
+                component "core/Probe" mech_speed_fr {
+                }
+                [
+                    position = 8800, 8132
+                ]
+
+                component "core/Probe" mech_angle_fr {
+                }
+                [
+                    position = 8648, 8192
+                ]
+
+                component "core/Signal Controlled Voltage Source" Ebemf {
+                }
+                [
+                    position = 7992, 8260
+                    rotation = right
+                    size = 64, 32
+                ]
+
+                component "core/Gain" Gain {
+                    gain = "0"
+                }
+                [
+                    position = 7820, 7824
+                ]
+
+                port A1 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8036
+                ]
+
+                port A2 {
+                    position = left:auto
+                    kind = pe
+                }
+                [
+                    position = 7320, 8244
+                ]
+
+                port Tload {
+                    position = auto:auto
+                    kind = sp
+                    direction =  out
+                    sp_type {
+                        default = auto
+                        readonly = True
+                    }
+                }
+                [
+                    position = 7376, 7824
+                ]
+
+                tag Goto1 {
+                    value = "omega_FR"
+                    scope = global
+                    kind = sp
+                    direction = in
+                }
+                [
+                    position = 8068, 7712
+                    size = 60, 20
+                ]
+
+                junction Junction2 pe
+                [
+                    position = 7580, 8036
+                ]
+
+                junction Junction5 sp
+                [
+                    position = 8092, 8352
+                ]
+
+                junction Junction7 sp
+                [
+                    position = 7776, 8244
+                ]
+
+                junction Junction8 sp
+                [
+                    position = 7860, 8244
+                ]
+
+                junction Junction9 sp
+                [
+                    position = 7600, 7932
+                ]
+
+                junction Junction11 sp
+                [
+                    position = 8064, 7932
+                ]
+
+                junction Junction12 pe
+                [
+                    position = 7580, 8244
+                ]
+
+                junction Junction14 sp
+                [
+                    position = 7776, 8000
+                ]
+
+                junction Junction15 sp
+                [
+                    position = 8008, 8004
+                ]
+
+                comment Comment1 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Te</p></body></html> ENDCOMMENT 
+                [
+                    position = 7888, 7908
+                ]
+
+                comment Comment2 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">Tload </p></body></html> ENDCOMMENT 
+                [
+                    position = 7620, 7812
+                ]
+
+                comment Comment3 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">omega</p></body></html> ENDCOMMENT 
+                [
+                    position = 7852, 7984
+                ]
+
+                comment Comment4 START <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd"><html><head><meta name="qrichtext" content="1" /><meta charset="utf-8" /><style type="text/css">p, li { white-space: pre-wrap; }hr { height: 1px; border-width: 0; }li.unchecked::marker { content: "\2610"; }li.checked::marker { content: "\2612"; }</style></head><body style=" font-family:'Sans'; font-size:12pt; font-weight:400; font-style:normal;"><p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">e_bemf</p></body></html> ENDCOMMENT 
+                [
+                    position = 7868, 8220
+                ]
+
+                connect Ra.n_node La.p_node as Connection38
+                connect Junction2 Ra.p_node as Connection39
+                connect Junction2 Va1.p_node as Connection40
+                connect Junction2 Iarm.n_node as Connection41
+                connect b.out Sum1.in2 as Connection59
+                connect Sum1.out J-1.in as Connection65
+                connect J-1.out IntegratorOmega.in as Connection66
+                connect IntegratorOmega.out Junction5 as Connection68
+                [
+                    breakpoints = 8484, 7964; 8484, 8352
+                ]
+                connect A1 Iarm.p_node as Connection74
+                connect Va1.out Va1a2.in as Connection76
+                connect Junction5 Junction7 as Connection79
+                [
+                    breakpoints = 7756, 8352
+                ]
+                connect Junction7 Ke.in as Connection80
+                connect Ke.out Junction8 as Connection82
+                connect E_bemf.in Junction8 as Connection84
+                connect Iarm.out Junction9 as Connection85
+                connect Junction9 Kt.in as Connection86
+                connect i_fr.in Junction9 as Connection87
+                connect "Integrator Rollover1.input" Junction5 as Connection89
+                [
+                    breakpoints = 8092, 8256
+                ]
+                connect "Integrator Rollover1.out" mech_angle_fr.in as Connection90
+                [
+                    breakpoints = 8508, 8256; 8508, 8216
+                ]
+                connect Sum1.in Junction11 as Connection94
+                connect Junction11 Kt.out as Connection95
+                [
+                    breakpoints = 8064, 7932
+                ]
+                connect el_torque_fr.in Junction11 as Connection96
+                [
+                    breakpoints = 8512, 7876; 8512, 7852; 8064, 7852
+                ]
+                connect Ebemf.p_node La.n_node as Connection99
+                connect Va1.n_node Junction12 as Connection100
+                connect Junction12 A2 as Connection101
+                [
+                    breakpoints = 7364, 8244
+                ]
+                connect Ebemf.n_node Junction12 as Connection102
+                connect Junction14 Junction7 as Connection107
+                connect Goto1 Junction14 as Connection108
+                connect Tload Gain.in as Connection109
+                connect Gain.out Sum1.in1 as Connection110
+                connect Ebemf.in Junction8 as Connection111
+                [
+                    breakpoints = 8024, 8244; 7952, 8244
+                ]
+                connect b.in Junction15 as Connection112
+                connect Junction15 Junction14 as Connection113
+                connect mech_speed_fr.in Junction15 as Connection114
+            }
+            [
+                position = 8564, 8056
+                size = 256, 192
+            ]
+
+            component "core/SCADA Input" InA {
+                unit = ""
+            }
+            [
+                position = 7780, 7776
+            ]
+
+            component "core/Probe" InA_FR {
+            }
+            [
+                position = 8124, 7792
+            ]
+
+            component "core/Probe" T_load {
+            }
+            [
+                position = 8572, 7816
+            ]
+
+            port DC+ {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7680, 7964
+            ]
+
+            port DC- {
+                position = left:auto
+                kind = pe
+            }
+            [
+                position = 7680, 8156
+            ]
+
+            port In1 {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 8068, 7596
+            ]
+
+            junction Junction1 sp
+            [
+                position = 7936, 7784
+            ]
+
+            junction Junction2 sp
+            [
+                position = 7928, 7776
+            ]
+
+            junction Junction3 sp
+            [
+                position = 8372, 7816
+            ]
+
+            connect En.out "Single Phase Inverter1.En" as Connection7
+            connect Gain1.out "Single Phase Inverter1.InB" as Connection9
+            connect "Single Phase Inverter1.neg_out" DC- as Connection35
+            [
+                breakpoints = 7768, 8156
+            ]
+            connect "Single Phase Inverter1.pos_out" DC+ as Connection34
+            [
+                breakpoints = 7768, 7964
+            ]
+            connect "Single Phase Inverter1.a_in" PMDC.A1 as Connection36
+            [
+                breakpoints = 8256, 7964; 8256, 8056
+            ]
+            connect "Single Phase Inverter1.b_in" PMDC.A2 as Connection37
+            [
+                breakpoints = 8256, 8156; 8256, 8128
+            ]
+            connect "Single Phase Inverter1.InA" Junction1 as Connection41
+            [
+                breakpoints = 7940, 7860
+            ]
+            connect Junction1 Gain1.in as Connection42
+            [
+                breakpoints = 7940, 7784; 7936, 7784
+            ]
+            connect InA.out Junction2 as Connection44
+            connect Junction2 Junction1 as Connection45
+            connect InA_FR.in Junction2 as Connection46
+            [
+                breakpoints = 8092, 7760; 7928, 7760
+            ]
+            connect T_load.in Junction3 as Connection59
+            connect Junction3 PMDC.Tload as Connection60
+            [
+                breakpoints = 8372, 7816
+            ]
+            connect In1 Junction3 as Connection61
+        }
+        [
+            position = 8592, 8332
+            size = 112, 64
+        ]
+
+        component "core/Probe" Vbat {
+        }
+        [
+            position = 7640, 7952
+        ]
+
+        component "core/Core Marker" "Core Marker1" {
+            marker_id = "id1"
+        }
+        [
+            position = 8260, 8168
+        ]
+
+        component "core/Core Marker" "Core Marker2" {
+        }
+        [
+            position = 7596, 7804
+        ]
+
+        component "core/Core Marker" "Core Marker3" {
+            marker_id = "id2"
+        }
+        [
+            position = 8432, 7800
+        ]
+
+        component "core/Single Phase TLM Core Coupling" "Core Coupling 1" {
+            embedded_components = "True"
+            inductance = "1e-6"
+        }
+        [
+            position = 8008, 8304
+            size = 13, 256
+        ]
+
+        component "core/Single Phase TLM Core Coupling" "Core Coupling 2" {
+            embedded_components = "True"
+            inductance = "1e-6"
+        }
+        [
+            position = 8012, 7964
+            size = 13, 256
+        ]
+
+        component "core/Battery" Battery2 {
+            battery_type = "Lithium-Ion"
+            nominal_voltage = "400"
+        }
+        [
+            position = 9128, 8032
+            rotation = left
+            scale = 1, -1
+            size = 64, 48
+        ]
+
+        component "core/Capacitor" C2 {
+            capacitance = "1e-3"
+        }
+        [
+            position = 9036, 8084
+            rotation = left
+        ]
+
+        component "core/Voltage Measurement" VCbat1 {
+            sig_output = "True"
+        }
+        [
+            position = 8924, 8008
+            rotation = left
+            size = 64, 32
+        ]
+
+        component "core/Single Phase TLM Core Coupling" "Core Coupling 3" {
+            embedded_components = "True"
+            inductance = "1e-6"
+        }
+        [
+            position = 8684, 7980
+            size = 13, 256
+        ]
+
+        component "core/Single Phase TLM Core Coupling" "Core Coupling 4" {
+            embedded_components = "True"
+            inductance = "1e-6"
+        }
+        [
+            position = 8696, 8312
+            size = 13, 256
+        ]
+
+        component "core/Core Marker" "Core Marker4" {
+        }
+        [
+            position = 9040, 7796
+        ]
+
+        component Subsystem road_surface_model_fl {
+            layout = dynamic
+            component "core/Probe" fl_Tload {
+            }
+            [
+                position = 9548, 7924
+            ]
+
+            component "core/Gain" cicr_wheel {
+                gain = "Rw"
+            }
+            [
+                position = 8052, 8152
+            ]
+
+            component "core/Probe" v_wheel_fl {
+            }
+            [
+                position = 8380, 7908
+            ]
+
+            component "core/1D look-up table" LUT_mu_slip_FL {
+                in_vec_x = "[0, 0.02, 0.05, 0.10, 0.15, 0.20, 0.30, 0.50, 1.00]"
+                out_vec_f_x = "[0, 0.25, 0.55, 0.90, 1.00, 0.95, 0.80, 0.60, 0.40]"
+                table_impl = "Non-equidistant"
+            }
+            [
+                position = 8624, 8100
+            ]
+
+            component "core/SCADA Input" mu_scalefl {
+                unit = ""
+            }
+            [
+                position = 8684, 8176
+            ]
+
+            component "core/Product" Product1 {
+            }
+            [
+                position = 8852, 8136
+            ]
+
+            component "core/Probe" mu_FL {
+            }
+            [
+                position = 9008, 8192
+            ]
+
+            component "core/Constant" fz {
+                value = "Fz"
+            }
+            [
+                position = 8812, 8048
+            ]
+
+            component "core/C function" "C function2" {
+                arb_defs = "/*Begin code section*/
+
+/*End code section*/"
+                init_fnc = "/*Begin code section*/
+
+/*End code section*/"
+                input_terminals = "real v_wheel;inherit v_vehicle;"
+                input_terminals_dimensions = "inherit;inherit"
+                input_terminals_feedthrough = "True;True"
+                input_terminals_show_labels = "True;True"
+                output_fnc = "/*Begin code section*/
+double v_min = 0.5;
+double denom = fabs(v_vehicle);
+
+if (denom < v_min) {
+    denom = v_min;
+}
+
+double slip_local = (v_wheel - v_vehicle) / denom;
+
+if (slip_local > 1.0) {
+    slip_local = 1.0;
+}
+if (slip_local < -1.0) {
+    slip_local = -1.0;
+}
+
+slip = slip_local;
+
+if (slip_local > 0.001) {
+    slip_sign = 1.0;
+} else if (slip_local < -0.001) {
+    slip_sign = -1.0;
+} else {
+    slip_sign = 0.0;
+}
+/*End code section*/"
+                output_terminals = "real slip;inherit slip_sign;"
+                output_terminals_dimensions = "inherit;inherit"
+                output_terminals_feedthrough = "True;True"
+                output_terminals_show_labels = "True;True"
+                update_fnc = "/*Begin code section*/
+
+/*End code section*/"
+            }
+            [
+                position = 8284, 8192
+                size = 144, 128
+            ]
+
+            component "core/Product" Product2 {
+            }
+            [
+                position = 9004, 8124
+            ]
+
+            component "core/Product" Fx {
+            }
+            [
+                position = 9100, 8128
+            ]
+
+            component "core/Gain" Gain_Rw_Tload {
+                gain = "Gain_Rw_Tload"
+            }
+            [
+                position = 9264, 8112
+            ]
+
+            component "core/SCADA Input" v_vehicle {
+                def_value = "5"
+                max = "40"
+                min = "0"
+                unit = "m/s"
+            }
+            [
+                position = 7776, 8216
+            ]
+
+            component "core/Abs" Abs1 {
+            }
+            [
+                position = 8452, 8056
+            ]
+
+            component "core/Gain" cicr_wheel1 {
+                gain = "Rw"
+            }
+            [
+                position = 8204, 8560
+            ]
+
+            component "core/Probe" v_wheel_FR {
+            }
+            [
+                position = 8484, 8308
+            ]
+
+            component "core/1D look-up table" LUT_mu_slip_FR {
+                in_vec_x = "[0, 0.02, 0.05, 0.10, 0.15, 0.20, 0.30, 0.50, 1.00]"
+                out_vec_f_x = "[0, 0.25, 0.55, 0.90, 1.00, 0.95, 0.80, 0.60, 0.40]"
+                table_impl = "Non-equidistant"
+            }
+            [
+                position = 8728, 8500
+            ]
+
+            component "core/SCADA Input" mu_scalefr {
+                unit = ""
+            }
+            [
+                position = 8788, 8576
+            ]
+
+            component "core/Product" Product3 {
+            }
+            [
+                position = 8956, 8536
+            ]
+
+            component "core/Probe" mu_FR {
+            }
+            [
+                position = 9112, 8592
+            ]
+
+            component "core/Constant" fz1 {
+                value = "Fz"
+            }
+            [
+                position = 8916, 8448
+            ]
+
+            component "core/C function" "C function3" {
+                arb_defs = "/*Begin code section*/
+
+/*End code section*/"
+                init_fnc = "/*Begin code section*/
+
+/*End code section*/"
+                input_terminals = "real v_wheel;inherit v_vehicle;"
+                input_terminals_dimensions = "inherit;inherit"
+                input_terminals_feedthrough = "True;True"
+                input_terminals_show_labels = "True;True"
+                output_fnc = "/*Begin code section*/
+double v_min = 0.5;
+double denom = fabs(v_vehicle);
+
+if (denom < v_min) {
+    denom = v_min;
+}
+
+double slip_local = (v_wheel - v_vehicle) / denom;
+
+if (slip_local > 1.0) {
+    slip_local = 1.0;
+}
+if (slip_local < -1.0) {
+    slip_local = -1.0;
+}
+
+slip = slip_local;
+
+if (slip_local > 0.001) {
+    slip_sign = 1.0;
+} else if (slip_local < -0.001) {
+    slip_sign = -1.0;
+} else {
+    slip_sign = 0.0;
+}
+/*End code section*/"
+                output_terminals = "real slip;inherit slip_sign;"
+                output_terminals_dimensions = "inherit;inherit"
+                output_terminals_feedthrough = "True;True"
+                output_terminals_show_labels = "True;True"
+                update_fnc = "/*Begin code section*/
+
+/*End code section*/"
+            }
+            [
+                position = 8360, 8580
+                size = 144, 128
+            ]
+
+            component "core/Product" Product4 {
+            }
+            [
+                position = 9108, 8524
+            ]
+
+            component "core/Product" Fx1 {
+            }
+            [
+                position = 9204, 8528
+            ]
+
+            component "core/Gain" Gain_Rw_Tload1 {
+                gain = "Gain_Rw_Tload"
+            }
+            [
+                position = 9312, 8528
+            ]
+
+            component "core/Abs" Abs2 {
+            }
+            [
+                position = 8480, 8444
+            ]
+
+            component "core/Gain" cicr_wheel2 {
+                gain = "Rw"
+            }
+            [
+                position = 8176, 8996
+            ]
+
+            component "core/Probe" v_wheel_RL {
+            }
+            [
+                position = 8456, 8744
+            ]
+
+            component "core/1D look-up table" LUT_mu_slip_RL {
+                in_vec_x = "[0, 0.02, 0.05, 0.10, 0.15, 0.20, 0.30, 0.50, 1.00]"
+                out_vec_f_x = "[0, 0.25, 0.55, 0.90, 1.00, 0.95, 0.80, 0.60, 0.40]"
+                table_impl = "Non-equidistant"
+            }
+            [
+                position = 8704, 8924
+            ]
+
+            component "core/SCADA Input" mu_scalerl {
+                unit = ""
+            }
+            [
+                position = 8736, 9020
+            ]
+
+            component "core/Product" Product5 {
+            }
+            [
+                position = 8928, 8972
+            ]
+
+            component "core/Probe" mu_RL {
+            }
+            [
+                position = 9084, 9028
+            ]
+
+            component "core/Constant" fz2 {
+                value = "Fz"
+            }
+            [
+                position = 8888, 8884
+            ]
+
+            component "core/C function" "C function4" {
+                arb_defs = "/*Begin code section*/
+
+/*End code section*/"
+                init_fnc = "/*Begin code section*/
+
+/*End code section*/"
+                input_terminals = "real v_wheel;inherit v_vehicle;"
+                input_terminals_dimensions = "inherit;inherit"
+                input_terminals_feedthrough = "True;True"
+                input_terminals_show_labels = "True;True"
+                output_fnc = "/*Begin code section*/
+double v_min = 0.5;
+double denom = fabs(v_vehicle);
+
+if (denom < v_min) {
+    denom = v_min;
+}
+
+double slip_local = (v_wheel - v_vehicle) / denom;
+
+if (slip_local > 1.0) {
+    slip_local = 1.0;
+}
+if (slip_local < -1.0) {
+    slip_local = -1.0;
+}
+
+slip = slip_local;
+
+if (slip_local > 0.001) {
+    slip_sign = 1.0;
+} else if (slip_local < -0.001) {
+    slip_sign = -1.0;
+} else {
+    slip_sign = 0.0;
+}
+/*End code section*/"
+                output_terminals = "real slip;inherit slip_sign;"
+                output_terminals_dimensions = "inherit;inherit"
+                output_terminals_feedthrough = "True;True"
+                output_terminals_show_labels = "True;True"
+                update_fnc = "/*Begin code section*/
+
+/*End code section*/"
+            }
+            [
+                position = 8332, 9016
+                size = 144, 128
+            ]
+
+            component "core/Product" Product6 {
+            }
+            [
+                position = 9080, 8960
+            ]
+
+            component "core/Product" Fx2 {
+            }
+            [
+                position = 9176, 8964
+            ]
+
+            component "core/Gain" Gain_Rw_Tload2 {
+                gain = "Gain_Rw_Tload"
+            }
+            [
+                position = 9248, 8964
+            ]
+
+            component "core/Abs" Abs3 {
+            }
+            [
+                position = 8452, 8880
+            ]
+
+            component "core/Gain" cicr_wheel3 {
+                gain = "Rw"
+            }
+            [
+                position = 8080, 9480
+            ]
+
+            component "core/Probe" v_wheel_RR {
+            }
+            [
+                position = 8324, 9312
+            ]
+
+            component "core/1D look-up table" LUT_mu_slip_RR {
+                in_vec_x = "[0, 0.02, 0.05, 0.10, 0.15, 0.20, 0.30, 0.50, 1.00]"
+                out_vec_f_x = "[0, 0.25, 0.55, 0.90, 1.00, 0.95, 0.80, 0.60, 0.40]"
+                table_impl = "Non-equidistant"
+            }
+            [
+                position = 8696, 9420
+            ]
+
+            component "core/SCADA Input" mu_scalerr {
+                unit = ""
+            }
+            [
+                position = 8756, 9496
+            ]
+
+            component "core/Product" Product7 {
+            }
+            [
+                position = 8924, 9456
+            ]
+
+            component "core/Probe" mu_RR {
+            }
+            [
+                position = 9080, 9512
+            ]
+
+            component "core/Constant" fz3 {
+                value = "Fz"
+            }
+            [
+                position = 8884, 9368
+            ]
+
+            component "core/C function" "C function5" {
+                arb_defs = "/*Begin code section*/
+
+/*End code section*/"
+                init_fnc = "/*Begin code section*/
+
+/*End code section*/"
+                input_terminals = "real v_wheel;inherit v_vehicle;"
+                input_terminals_dimensions = "inherit;inherit"
+                input_terminals_feedthrough = "True;True"
+                input_terminals_show_labels = "True;True"
+                output_fnc = "/*Begin code section*/
+double v_min = 0.5;
+double denom = fabs(v_vehicle);
+
+if (denom < v_min) {
+    denom = v_min;
+}
+
+double slip_local = (v_wheel - v_vehicle) / denom;
+
+if (slip_local > 1.0) {
+    slip_local = 1.0;
+}
+if (slip_local < -1.0) {
+    slip_local = -1.0;
+}
+
+slip = slip_local;
+
+if (slip_local > 0.001) {
+    slip_sign = 1.0;
+} else if (slip_local < -0.001) {
+    slip_sign = -1.0;
+} else {
+    slip_sign = 0.0;
+}
+/*End code section*/"
+                output_terminals = "real slip;inherit slip_sign;"
+                output_terminals_dimensions = "inherit;inherit"
+                output_terminals_feedthrough = "True;True"
+                output_terminals_show_labels = "True;True"
+                update_fnc = "/*Begin code section*/
+
+/*End code section*/"
+            }
+            [
+                position = 8328, 9500
+                size = 144, 128
+            ]
+
+            component "core/Product" Product8 {
+            }
+            [
+                position = 9076, 9444
+            ]
+
+            component "core/Product" Fx3 {
+            }
+            [
+                position = 9172, 9448
+            ]
+
+            component "core/Gain" Gain_Rw_Tload3 {
+                gain = "Gain_Rw_Tload"
+            }
+            [
+                position = 9244, 9448
+            ]
+
+            component "core/Abs" Abs4 {
+            }
+            [
+                position = 8448, 9364
+            ]
+
+            component "core/Probe" slip_fl {
+            }
+            [
+                position = 8612, 7912
+            ]
+
+            component "core/Probe" slip_fr {
+            }
+            [
+                position = 8676, 8372
+            ]
+
+            component "core/Probe" slip_rl {
+            }
+            [
+                position = 8700, 8744
+            ]
+
+            component "core/Probe" slip_rr {
+            }
+            [
+                position = 8684, 9244
+            ]
+
+            component "core/Probe" rr_load {
+            }
+            [
+                position = 9500, 9260
+            ]
+
+            component "core/Probe" rl_load {
+            }
+            [
+                position = 9476, 8796
+            ]
+
+            component "core/Probe" fr_load {
+            }
+            [
+                position = 9524, 8564
+            ]
+
+            component "core/Probe" v_vehicle_test {
+            }
+            [
+                position = 7912, 8308
+            ]
+
+            component "core/Probe" muscale_test_fl {
+            }
+            [
+                position = 8836, 8288
+            ]
+
+            component "core/Probe" fx_fl {
+            }
+            [
+                position = 9300, 8228
+            ]
+
+            component "core/Probe" slip_signFL {
+            }
+            [
+                position = 9260, 8340
+            ]
+
+            port omega_FL {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7732, 8048
+            ]
+
+            port omega_FR {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7728, 8384
+            ]
+
+            port omega_RL {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7696, 8888
+            ]
+
+            port omega_RR {
+                position = auto:auto
+                kind = sp
+                direction =  out
+                sp_type {
+                    default = auto
+                    readonly = True
+                }
+            }
+            [
+                position = 7720, 9252
+            ]
+
+            tag Tload_FL {
+                value = "Tload_FL"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 9856, 8316
+                size = 60, 20
+            ]
+
+            tag Tload_RR {
+                value = "Tload_RR"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 9872, 8868
+                size = 60, 20
+            ]
+
+            tag Tload_RL {
+                value = "Tload_RL"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 9876, 8672
+                size = 60, 20
+            ]
+
+            tag Tload_FR {
+                value = "Tload_FR"
+                scope = global
+                kind = sp
+                direction = in
+            }
+            [
+                position = 9864, 8484
+                size = 60, 20
+            ]
+
+            junction Junction6 sp
+            [
+                position = 8940, 8132
+            ]
+
+            junction Junction7 sp
+            [
+                position = 8240, 8560
+            ]
+
+            junction Junction8 sp
+            [
+                position = 9044, 8532
+            ]
+
+            junction Junction9 sp
+            [
+                position = 8212, 8996
+            ]
+
+            junction Junction10 sp
+            [
+                position = 9016, 8968
+            ]
+
+            junction Junction11 sp
+            [
+                position = 8208, 9480
+            ]
+
+            junction Junction12 sp
+            [
+                position = 9012, 9452
+            ]
+
+            junction Junction13 sp
+            [
+                position = 8148, 9064
+            ]
+
+            junction Junction14 sp
+            [
+                position = 8088, 8632
+            ]
+
+            junction Junction16 sp
+            [
+                position = 9300, 8100
+            ]
+
+            junction Junction17 sp
+            [
+                position = 8136, 8152
+            ]
+
+            junction Junction18 sp
+            [
+                position = 8096, 8240
+            ]
+
+            junction Junction20 sp
+            [
+                position = 8448, 8440
+            ]
+
+            junction Junction21 sp
+            [
+                position = 8420, 8884
+            ]
+
+            junction Junction22 sp
+            [
+                position = 8416, 9364
+            ]
+
+            junction Junction23 sp
+            [
+                position = 9416, 9448
+            ]
+
+            junction Junction24 sp
+            [
+                position = 9284, 8816
+            ]
+
+            junction Junction25 sp
+            [
+                position = 9448, 8484
+            ]
+
+            junction Junction26 sp
+            [
+                position = 7872, 8224
+            ]
+
+            junction Junction27 sp
+            [
+                position = 8732, 8144
+            ]
+
+            junction Junction28 sp
+            [
+                position = 8420, 8064
+            ]
+
+            junction Junction29 sp
+            [
+                position = 9152, 8112
+            ]
+
+            junction Junction30 sp
+            [
+                position = 9060, 8136
+            ]
+
+            connect LUT_mu_slip_FL.value Product1.in as Connection346
+            [
+                breakpoints = 8788, 8128
+            ]
+            connect fz.out Product2.in as Connection355
+            connect Product2.out Fx.in as Connection356
+            connect Junction6 mu_FL.in as Connection366
+            connect Junction6 Product2.in1 as Connection367
+            connect Junction6 Product1.out as Connection368
+            connect omega_FL cicr_wheel.in as Connection370
+            connect cicr_wheel1.out Junction7 as Connection372
+            connect Junction7 v_wheel_FR.in as Connection373
+            [
+                breakpoints = 8240, 8552
+            ]
+            connect "C function3.v_wheel" Junction7 as Connection374
+            [
+                breakpoints = 8260, 8540; 8260, 8560
+            ]
+            connect LUT_mu_slip_FR.value Product3.in as Connection375
+            [
+                breakpoints = 8892, 8528
+            ]
+            connect fz1.out Product4.in as Connection376
+            connect Product4.out Fx1.in as Connection377
+            connect Gain_Rw_Tload1.in Fx1.out as Connection378
+            connect "C function3.slip_sign" Fx1.in1 as Connection381
+            [
+                breakpoints = 8448, 8640; 9164, 8640
+            ]
+            connect Junction8 mu_FR.in as Connection382
+            connect Junction8 Product4.in1 as Connection383
+            connect Junction8 Product3.out as Connection384
+            connect mu_scalefr.out Product3.in1 as Connection385
+            [
+            ]
+            connect cicr_wheel2.out Junction9 as Connection386
+            connect Junction9 v_wheel_RL.in as Connection387
+            [
+                breakpoints = 8212, 8988
+            ]
+            connect "C function4.v_wheel" Junction9 as Connection388
+            [
+                breakpoints = 8232, 8976; 8232, 8996
+            ]
+            connect LUT_mu_slip_RL.value Product5.in as Connection389
+            [
+                breakpoints = 8864, 8964
+            ]
+            connect fz2.out Product6.in as Connection390
+            connect Product6.out Fx2.in as Connection391
+            connect Gain_Rw_Tload2.in Fx2.out as Connection392
+            connect Abs3.out LUT_mu_slip_RL.addr as Connection394
+            connect "C function4.slip_sign" Fx2.in1 as Connection395
+            [
+                breakpoints = 8420, 9076; 9136, 9076
+            ]
+            connect Junction10 mu_RL.in as Connection396
+            connect Junction10 Product6.in1 as Connection397
+            connect Junction10 Product5.out as Connection398
+            connect mu_scalerl.out Product5.in1 as Connection399
+            [
+            ]
+            connect cicr_wheel3.out Junction11 as Connection400
+            connect Junction11 v_wheel_RR.in as Connection401
+            [
+                breakpoints = 8208, 9472
+            ]
+            connect "C function5.v_wheel" Junction11 as Connection402
+            [
+                breakpoints = 8228, 9460; 8228, 9480
+            ]
+            connect LUT_mu_slip_RR.value Product7.in as Connection403
+            [
+                breakpoints = 8860, 9448
+            ]
+            connect fz3.out Product8.in as Connection404
+            connect Product8.out Fx3.in as Connection405
+            connect Gain_Rw_Tload3.in Fx3.out as Connection406
+            connect Abs4.out LUT_mu_slip_RR.addr as Connection408
+            connect "C function5.slip_sign" Fx3.in1 as Connection409
+            [
+                breakpoints = 8416, 9560; 9132, 9560
+            ]
+            connect Junction12 mu_RR.in as Connection410
+            connect Junction12 Product8.in1 as Connection411
+            connect Junction12 Product7.out as Connection412
+            connect omega_FR cicr_wheel1.in as Connection414
+            [
+            ]
+            connect cicr_wheel2.in omega_RL as Connection415
+            [
+            ]
+            connect cicr_wheel3.in omega_RR as Connection416
+            [
+            ]
+            connect "C function4.v_vehicle" Junction13 as Connection417
+            connect "C function5.v_vehicle" Junction13 as Connection419
+            [
+                breakpoints = 8148, 9544; 8148, 9060
+            ]
+            connect "C function3.v_vehicle" Junction14 as Connection420
+            [
+                breakpoints = 8272, 8632
+            ]
+            connect Junction14 Junction13 as Connection421
+            [
+                breakpoints = 8088, 8632; 8088, 8628; 8088, 9056; 8148, 9056
+            ]
+            connect mu_scalerr.out Product7.in1 as Connection425
+            connect fl_Tload.in Junction16 as Connection426
+            [
+                breakpoints = 9212, 8060
+            ]
+            connect Junction16 Gain_Rw_Tload.out as Connection427
+            connect cicr_wheel.out Junction17 as Connection444
+            connect Junction17 v_wheel_fl.in as Connection445
+            [
+                breakpoints = 8136, 8152
+            ]
+            connect "C function2.v_wheel" Junction17 as Connection446
+            connect Junction14 Junction18 as Connection447
+            [
+                breakpoints = 8096, 8632
+            ]
+            connect "C function2.v_vehicle" Junction18 as Connection449
+            connect Abs2.out LUT_mu_slip_FR.addr as Connection456
+            [
+                breakpoints = 8616, 8444
+            ]
+            connect "C function3.slip" Junction20 as Connection457
+            connect Junction20 Abs2.in as Connection458
+            connect slip_fr.in Junction20 as Connection459
+            connect "C function4.slip" Junction21 as Connection460
+            connect Junction21 Abs3.in as Connection461
+            connect slip_rl.in Junction21 as Connection462
+            connect Junction22 slip_rr.in as Connection463
+            connect Junction22 "C function5.slip" as Connection464
+            connect Junction22 Abs4.in as Connection465
+            connect Gain_Rw_Tload3.out Junction23 as Connection466
+            connect Junction23 Tload_RR as Connection467
+            connect rr_load.in Junction23 as Connection468
+            connect Tload_RL Junction24 as Connection469
+            connect Junction24 Gain_Rw_Tload2.out as Connection470
+            connect rl_load.in Junction24 as Connection471
+            connect Tload_FR Junction25 as Connection472
+            connect Junction25 Gain_Rw_Tload1.out as Connection473
+            connect fr_load.in Junction25 as Connection474
+            connect Tload_FL Junction16 as Connection478
+            [
+                breakpoints = 9396, 8316
+            ]
+            connect Junction18 Junction26 as Connection479
+            [
+                breakpoints = 8096, 8224; 8084, 8224
+            ]
+            connect Junction26 v_vehicle.out as Connection480
+            [
+                breakpoints = 7808, 8216
+            ]
+            connect v_vehicle_test.in Junction26 as Connection481
+            connect Junction27 muscale_test_fl.in as Connection482
+            connect Junction27 mu_scalefl.out as Connection483
+            connect Junction27 Product1.in1 as Connection484
+            connect Abs1.out LUT_mu_slip_FL.addr as Connection485
+            [
+                breakpoints = 8528, 8056
+            ]
+            connect "C function2.slip" Junction28 as Connection486
+            connect Junction28 Abs1.in as Connection487
+            connect slip_fl.in Junction28 as Connection488
+            connect Gain_Rw_Tload.in Junction29 as Connection489
+            connect Junction29 Fx.out as Connection490
+            connect fx_fl.in Junction29 as Connection491
+            connect Junction30 slip_signFL.in as Connection492
+            connect Junction30 "C function2.slip_sign" as Connection493
+            connect Junction30 Fx.in1 as Connection494
+        }
+        [
+            position = 8176, 7476
+            size = 384, 168
+        ]
+
+        component "core/SCADA Input" omega_test {
+            unit = ""
+        }
+        [
+            position = 7764, 7336
+        ]
+
+        component "core/Probe" omega_TEST {
+        }
+        [
+            position = 7944, 7328
+        ]
+
+        tag From1 {
+            value = "Tload_FL"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 8124, 8236
+            size = 60, 20
+        ]
+
+        tag From2 {
+            value = "Tload_FR"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 8376, 8268
+            size = 60, 20
+        ]
+
+        tag From3 {
+            value = "Tload_RL"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 8064, 7796
+            size = 60, 20
+        ]
+
+        tag From4 {
+            value = "Tload_RR"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 8352, 7896
+            size = 60, 20
+        ]
+
+        tag From5 {
+            value = "omega_RL"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7720, 7516
+            size = 60, 20
+        ]
+
+        tag From6 {
+            value = "omega_RR"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7728, 7572
+            size = 60, 20
+        ]
+
+        tag From7 {
+            value = "omega_FR"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7712, 7460
+            size = 60, 20
+        ]
+
+        tag From8 {
+            value = "omega_FL"
+            scope = global
+            kind = sp
+            direction = out
+        }
+        [
+            position = 7712, 7404
+            size = 60, 20
+        ]
+
+        junction Junction8 pe
+        [
+            position = 7444, 8072
+        ]
+
+        junction Junction11 pe
+        [
+            position = 8076, 8200
+        ]
+
+        junction Junction12 pe
+        [
+            position = 8076, 8400
+        ]
+
+        junction Junction13 pe
+        [
+            position = 8260, 8200
+        ]
+
+        junction Junction15 pe
+        [
+            position = 8288, 7872
+        ]
+
+        junction Junction16 pe
+        [
+            position = 8068, 7876
+        ]
+
+        junction Junction17 pe
+        [
+            position = 8068, 8056
+        ]
+
+        junction Junction19 pe
+        [
+            position = 7520, 8068
+        ]
+
+        junction Junction21 pe
+        [
+            position = 7792, 7872
+        ]
+
+        junction Junction22 pe
+        [
+            position = 7676, 8064
+        ]
+
+        junction Junction23 pe
+        [
+            position = 7272, 7856
+        ]
+
+        junction Junction24 pe
+        [
+            position = 7596, 7848
+        ]
+
+        junction Junction25 pe
+        [
+            position = 7524, 7848
+        ]
+
+        junction Junction27 pe
+        [
+            position = 8972, 8180
+        ]
+
+        junction Junction28 pe
+        [
+            position = 8432, 7864
+        ]
+
+        junction Junction33 pe
+        [
+            position = 8320, 8204
+        ]
+
+        junction Junction34 pe
+        [
+            position = 8892, 8180
+        ]
+
+        junction Junction36 pe
+        [
+            position = 8292, 8068
+        ]
+
+        junction Junction37 pe
+        [
+            position = 8976, 8180
+        ]
+
+        junction Junction38 pe
+        [
+            position = 8320, 8420
+        ]
+
+        junction Junction39 pe
+        [
+            position = 9056, 7880
+        ]
+
+        junction Junction40 pe
+        [
+            position = 9036, 7880
+        ]
+
+        junction Junction41 pe
+        [
+            position = 8812, 7884
+        ]
+
+        junction Junction42 pe
+        [
+            position = 8932, 7884
+        ]
+
+        junction Junction44 sp
+        [
+            position = 7864, 7328
+        ]
+
+        junction Junction45 sp
+        [
+            position = 7948, 7416
+        ]
+
+        connect Battery1.n_node Junction8 as Connection24
+        connect C1.n_node Junction8 as Connection26
+        connect Junction11 FL.DC+ as Connection179
+        [
+            breakpoints = 8076, 8200; 8076, 8332
+        ]
+        connect "Core Coupling 1.a_out" Junction11 as Connection180
+        connect FL.DC- Junction12 as Connection181
+        [
+            breakpoints = 8076, 8348
+        ]
+        connect "Core Coupling 1.b_out" Junction12 as Connection183
+        connect Junction13 Junction11 as Connection187
+        connect "Core Marker1.node" Junction13 as Connection188
+        connect RR.DC+ Junction15 as Connection196
+        connect RL.DC+ Junction16 as Connection197
+        [
+            breakpoints = 8068, 7944
+        ]
+        connect Junction16 Junction15 as Connection198
+        [
+            breakpoints = 8068, 7872
+        ]
+        connect "Core Coupling 2.a_out" Junction16 as Connection199
+        connect RL.DC- Junction17 as Connection200
+        [
+            breakpoints = 8068, 7984
+        ]
+        connect "Core Coupling 2.b_out" Junction17 as Connection202
+        connect VCbat.n_node Junction19 as Connection206
+        connect Junction19 Junction8 as Connection207
+        [
+            breakpoints = 7520, 8072; 7504, 8072
+        ]
+        connect VCbat.out Vbat.in as Connection209
+        connect "Core Coupling 2.a_in" Junction21 as Connection218
+        connect "Core Coupling 1.a_in" Junction21 as Connection220
+        connect "Core Coupling 2.b_in" Junction22 as Connection221
+        connect Junction22 Junction19 as Connection222
+        connect "Core Coupling 1.b_in" Junction22 as Connection223
+        connect Battery1.p_node Junction23 as Connection234
+        connect Junction23 C1.p_node as Connection235
+        [
+            breakpoints = 7280, 7856
+        ]
+        connect Junction21 Junction24 as Connection236
+        [
+            breakpoints = 7596, 7872
+        ]
+        connect Junction24 "Core Marker2.node" as Connection237
+        connect Junction23 Junction25 as Connection239
+        connect Junction25 Junction24 as Connection240
+        connect VCbat.p_node Junction25 as Connection241
+        connect Battery2.n_node Junction27 as Connection244
+        connect "Core Marker3.node" Junction28 as Connection246
+        connect Junction28 Junction15 as Connection247
+        [
+            breakpoints = 8364, 7864; 8364, 7872
+        ]
+        connect FR.DC+ Junction33 as Connection259
+        [
+            breakpoints = 8320, 8328
+        ]
+        connect Junction33 Junction13 as Connection260
+        [
+            breakpoints = 8304, 8200
+        ]
+        connect "Core Coupling 3.a_in" Junction28 as Connection263
+        connect Junction27 C2.p_node as Connection265
+        [
+            breakpoints = 8964, 8180
+        ]
+        connect "Core Coupling 3.b_out" Junction34 as Connection267
+        connect VCbat1.p_node Junction34 as Connection269
+        connect RR.DC- Junction36 as Connection273
+        [
+            breakpoints = 8292, 7976
+        ]
+        connect Junction36 Junction17 as Connection274
+        [
+            breakpoints = 8292, 8068
+        ]
+        connect "Core Coupling 3.b_in" Junction36 as Connection275
+        connect "Core Coupling 4.a_in" Junction33 as Connection277
+        connect Junction34 Junction37 as Connection279
+        connect Junction37 Junction27 as Connection280
+        connect "Core Coupling 4.b_out" Junction37 as Connection281
+        connect FR.DC- Junction38 as Connection282
+        [
+            breakpoints = 8320, 8352
+        ]
+        connect Junction38 Junction12 as Connection283
+        [
+            breakpoints = 8168, 8420; 8076, 8420
+        ]
+        connect "Core Coupling 4.b_in" Junction38 as Connection284
+        connect Battery2.p_node Junction39 as Connection285
+        connect "Core Marker4.node" Junction39 as Connection287
+        connect Junction39 Junction40 as Connection289
+        connect Junction40 C2.n_node as Connection290
+        [
+            breakpoints = 9036, 7880; 9036, 8036
+        ]
+        connect "Core Coupling 3.a_out" Junction41 as Connection292
+        connect "Core Coupling 4.a_out" Junction41 as Connection294
+        connect Junction41 Junction42 as Connection295
+        connect Junction42 Junction40 as Connection296
+        connect VCbat1.n_node Junction42 as Connection297
+        connect From3 RL.load as Connection298
+        [
+            breakpoints = 8128, 7796; 8128, 7952
+        ]
+        connect From4 RR.load as Connection299
+        [
+            breakpoints = 8400, 7896; 8400, 7944
+        ]
+        connect From1 FL.load as Connection301
+        connect From2 FR.In1 as Connection302
+        connect Junction44 omega_TEST.in as Connection318
+        connect Junction45 road_surface_model_fl.omega_FL as Connection319
+        connect Junction45 Junction44 as Connection320
+        connect road_surface_model_fl.omega_FR Junction45 as Connection321
+        connect road_surface_model_fl.omega_RL Junction45 as Connection322
+        connect road_surface_model_fl.omega_RR Junction45 as Connection323
+        connect omega_test.out Junction44 as Connection324
+        [
+            breakpoints = 7844, 7416; 7864, 7416
+        ]
+    }
+
+    logically_deleted {
+        "Battery2"
+        "C2"
+        "VCbat1"
+        "Junction27"
+        "Connection244"
+        "Core Coupling 3"
+        "Connection263"
+        "Connection265"
+        "Junction34"
+        "Connection267"
+        "Connection269"
+        "Connection275"
+        "Core Coupling 4"
+        "Connection277"
+        "Junction37"
+        "Connection279"
+        "Connection280"
+        "Connection281"
+        "Connection284"
+        "Core Marker4"
+        "Junction39"
+        "Connection285"
+        "Connection287"
+        "Junction40"
+        "Connection289"
+        "Connection290"
+        "Junction41"
+        "Connection292"
+        "Connection294"
+        "Junction42"
+        "Connection295"
+        "Connection296"
+        "Connection297"
+        "From5"
+        "From6"
+        "From7"
+        "From8"
+    }
+
+    default {
+        "core/1D look-up table" {
+            in_vec_x = "np.arange(-5,6)"
+            out_vec_f_x = "np.arange(-5,6)**2"
+            table_impl = "Equidistant"
+            ext_mode = "Clip"
+            execution_rate = "inherit"
+        }
+
+        "core/Abs" {
+            execution_rate = "inherit"
+        }
+
+        "core/C function" {
+            input_terminals = "real in;"
+            input_terminals_show_labels = "False;"
+            input_terminals_feedthrough = "True;"
+            input_terminals_dimensions = "inherit;"
+            output_terminals = "real out;"
+            output_terminals_show_labels = "False;"
+            output_terminals_feedthrough = "True;"
+            output_terminals_dimensions = "inherit;"
+            output_fnc = ""
+            update_fnc = ""
+            init_fnc = ""
+            global_variables = ""
+            parameters = ""
+            library_load_type = "Compile-time load"
+            dll_file_path = ""
+            dll_file_path_full = ""
+            arm_a9_file_path = ""
+            arm_a9_file_path_full = ""
+            arm_a53_file_path = ""
+            arm_a53_file_path_full = ""
+            h_file_path = ""
+            h_file_path_full = ""
+            add_src_path = ""
+            add_src_path_full = ""
+            convert_to_relative_dll = "True"
+            convert_to_relative_a = "True"
+            convert_to_relative_src = "True"
+            arb_defs = ""
+            add_macros = ""
+            skip_pre_cmpl_check = "False"
+            generate_for_hil = "True"
+            execution_rate = "inherit"
+            _supported_platforms = "[\'generic\']"
+            refresh = "refresh"
+        }
+
+        "core/Capacitor" {
+            signal_access = "inherit"
+            capacitance = "1e-6"
+            initial_voltage = "0"
+            pole_shift_ignore = "False"
+            visible = "True"
+        }
+
+        "core/Constant" {
+            value = "1"
+            signal_type = "real"
+            execution_rate = "100e-6"
+            _tunable = "False"
+        }
+
+        "core/Core Marker" {
+            marker_id = "id0"
+        }
+
+        "core/Gain" {
+            gain = "1"
+            multiplication = "Element-wise(K.*u)"
+            force_tml = "True"
+            _tunable = "False"
+            execution_rate = "inherit"
+        }
+
+        "core/Inductor" {
+            signal_access = "inherit"
+            inductance = "1e-3"
+            initial_current = "0.0"
+            pole_shift_ignore = "False"
+            visible = "True"
+        }
+
+        "core/Integrator" {
+            show_reset = "none"
+            reset_type = "asynchronous"
+            show_init_condition = "internal"
+            init_value = "0"
+            limit_output = "False"
+            limit_upper = "inf"
+            limit_lower = "-inf"
+            show_state = "False"
+            state_port_type = "inherit"
+            tml_file = "gen_accumulator_integrator"
+            mode = "integrator"
+            execution_rate = "inherit"
+        }
+
+        "core/Integrator Rollover" {
+            initial_integrator_output = "0"
+            roll_over_value = "6.283185307"
+            execution_rate = "inherit"
+        }
+
+        "core/Probe" {
+            signal_access = "inherit"
+            addr = "0"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "generic"
+            streaming_en = "False"
+            streaming_er_idx = "0"
+            execution_rate = "inherit"
+        }
+
+        "core/Product" {
+            signs = "2"
+            execution_rate = "inherit"
+        }
+
+        "core/Resistor" {
+            resistance = "1"
+            param_set = ""
+        }
+
+        "core/SCADA Input" {
+            signal_access = "inherit"
+            addr = "0"
+            format = "real"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "real"
+            min = "-1e6"
+            max = "1e6"
+            def_value = "0"
+            unit = " "
+            execution_rate = "100e-6"
+        }
+
+        "core/Sum" {
+            signs = "2"
+            execution_rate = "inherit"
+        }
+
+        "core/Battery" {
+            signal_access = "inherit"
+            sig_output = "False"
+            lut = "False"
+            battery_type = "Lead-Acid"
+            nominal_voltage = "12.0"
+            capacity = "1.2"
+            initial_soc = "100.0"
+            execution_rate = "100e-6"
+            Ke_full = "108.0"
+            Kdisc_I = "5.0"
+            R_series = "0.25"
+            Kq_nom = "50.0"
+            Kq_exp = "0.9"
+            Ke_exp = "102.5"
+            preview = "Preview SOC Curve"
+        }
+
+        "core/Current Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+
+        "core/Signal Controlled Voltage Source" {
+            execution_rate = "inherit"
+        }
+
+        "core/Single Phase Inverter" {
+            signal_access = "inherit"
+            switches_names_at_mask = "[\'Sa_top\', \'Sa_bot\', \'Sb_top\', \'Sb_bot\']"
+            ctrl_src = "Digital input per switch"
+            op_mode = "Fixed carrier frequency"
+            carrier_freq = "10000.0"
+            phase_op_mode = "Fixed carrier phase offset"
+            carr_ph_offset = "[0.0, 180.0]"
+            d_time = "5e-6"
+            ref_sig_min_max = "[-1.0, 1.0]"
+            load_mode = "on min"
+            execution_rate = "inherit"
+            Sa_top = "1"
+            Sa_top_logic = "active high"
+            Sa_bot = "2"
+            Sa_bot_logic = "active high"
+            Sb_top = "3"
+            Sb_top_logic = "active high"
+            Sb_bot = "4"
+            Sb_bot_logic = "active high"
+            Sa_top_I = "False"
+            Sa_bot_I = "False"
+            Sb_top_I = "False"
+            Sb_bot_I = "False"
+            losses_estimation = "False"
+            fvd_def_method = "Voltage and Resistance"
+            load_xml_en = "User tables"
+            Switch_type = "IGBT"
+            Import_igbt_xml = "not selected"
+            Import_diode_xml = "not selected"
+            xml_data = "{}"
+            transistor_data = "{\'package_class\': \'IGBT\', \'variables\': {}, \'constants\': {}, \'custom_tables\': {}, \'turn_on_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.4068, 1.001, 1.822]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.6317, 1.38, 1.784]]], \'parsed_formula\': \'E_turn_on_losses\'}, \'turn_off_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.6, 0.88, 1.177]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.9094, 1.25, 1.784]]], \'parsed_formula\': \'E_turn_off_losses\'}, \'conduction_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0], \'temperature_axis\': [25.0, 125.0], \'voltage_drop\': [[0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31], [0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7]], \'parsed_formula\': \'v_conduction_losses\'}, \'c_function_code\': {\'output_fnc\': \'E_turn_on_losses = lookup3d(turn_on_losses_table, i, v, T, current_axis_turn_on_losses, voltage_axis_turn_on_losses, temperature_axis_turn_on_losses, 4, 2, 2);\nE_turn_off_losses = lookup3d(turn_off_losses_table, i, v, T,current_axis_turn_off_losses, voltage_axis_turn_off_losses, temperature_axis_turn_off_losses, 4, 2, 2);\nv_conduction_losses = lookup2d(conduction_losses_table, i, T,current_axis_conduction_losses, temperature_axis_conduction_losses, 12, 2);\ne_t_on = E_turn_on_losses;\ne_t_off = E_turn_off_losses;\nv_ce = v_conduction_losses;\n\', \'arb_defs\': \'real current_axis_turn_off_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_off_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_off_losses[2] = { 25.0, 125.0 };\nreal E_turn_off_losses;\nreal turn_off_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.88, 1.177, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9094, 1.25, 1.784 };\nreal current_axis_conduction_losses[12] = { 0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0 };\nreal temperature_axis_conduction_losses[2] = { 25.0, 125.0 };\nreal v_conduction_losses;\nreal conduction_losses_table[24] = { 0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31, 0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7 };\nreal current_axis_turn_on_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_on_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_on_losses[2] = { 25.0, 125.0 };\nreal E_turn_on_losses;\nreal turn_on_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.4068, 1.001, 1.822, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6317, 1.38, 1.784 };\n\'}}"
+            diode_data = "{\'package_class\': \'Diode\', \'variables\': {}, \'constants\': {}, \'custom_tables\': {}, \'turn_on_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.4068, 1.001, 1.822]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.6317, 1.38, 1.784]]], \'parsed_formula\': \'E_turn_on_losses\'}, \'turn_off_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 400.0, 800.0, 1200.0], \'voltage_axis\': [0.0, 1800.0], \'temperature_axis\': [25.0, 125.0], \'energy\': [[[0.0, 0.0, 0.0, 0.0], [0.0, 0.6, 0.88, 1.177]], [[0.0, 0.0, 0.0, 0.0], [0.0, 0.9094, 1.25, 1.784]]], \'parsed_formula\': \'E_turn_off_losses\'}, \'conduction_losses\': {\'type\': \'Table only\', \'formula\': None, \'current_axis\': [0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0], \'temperature_axis\': [25.0, 125.0], \'voltage_drop\': [[0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31], [0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7]], \'parsed_formula\': \'v_conduction_losses\'}, \'c_function_code\': {\'output_fnc\': \'E_turn_on_losses = lookup3d(turn_on_losses_table, i, v, T, current_axis_turn_on_losses, voltage_axis_turn_on_losses, temperature_axis_turn_on_losses, 4, 2, 2);\nE_turn_off_losses = lookup3d(turn_off_losses_table, i, v, T,current_axis_turn_off_losses, voltage_axis_turn_off_losses, temperature_axis_turn_off_losses, 4, 2, 2);\nv_conduction_losses = lookup2d(conduction_losses_table, i, T,current_axis_conduction_losses, temperature_axis_conduction_losses, 12, 2);\ne_t_on = E_turn_on_losses;\ne_t_off = E_turn_off_losses;\nv_ce = v_conduction_losses;\n\', \'arb_defs\': \'real current_axis_turn_off_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_off_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_off_losses[2] = { 25.0, 125.0 };\nreal E_turn_off_losses;\nreal turn_off_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.6, 0.88, 1.177, 0.0, 0.0, 0.0, 0.0, 0.0, 0.9094, 1.25, 1.784 };\nreal current_axis_conduction_losses[12] = { 0.0, 100.0, 200.0, 400.0, 600.0, 700.0, 800.0, 900.0, 1000.0, 1200.0, 1400.0, 1600.0 };\nreal temperature_axis_conduction_losses[2] = { 25.0, 125.0 };\nreal v_conduction_losses;\nreal conduction_losses_table[24] = { 0.0, 1.5, 1.8, 2.3, 2.69, 2.9, 3.1, 3.25, 3.41, 3.73, 4.0, 4.31, 0.0, 1.63, 2.09, 2.77, 3.37, 3.63, 3.8, 4.11, 4.37, 4.81, 5.29, 5.7 };\nreal current_axis_turn_on_losses[4] = { 0.0, 400.0, 800.0, 1200.0 };\nreal voltage_axis_turn_on_losses[2] = { 0.0, 1800.0 };\nreal temperature_axis_turn_on_losses[2] = { 25.0, 125.0 };\nreal E_turn_on_losses;\nreal turn_on_losses_table[16] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.4068, 1.001, 1.822, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6317, 1.38, 1.784 };\n\'}}"
+            user_vars_transistor = "User variables transistor"
+            user_vars_diode = "User variables diode"
+            Vce = "1.3"
+            Rce = "0"
+            Vd = "1.2"
+            Rd = "0"
+            i_sw = "[0.0, 6.0, 12.0, 18.0, 24.0]"
+            v_sw = "[0.0, 600.0]"
+            temp_sw = "[25.0, 50.0, 75.0, 100.0, 125.0]"
+            vce_table_out = "[1.3, 1.3, 1.3, 1.3, 1.3]"
+            vd_table_out = "[1.2, 1.2, 1.2, 1.2, 1.2]"
+            et_on_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*3.8e-3, 0.4*3.8e-3, 0.8*3.8e-3, 0.68*3.8e-3, 0.9*3.8e-3], [0.65*3.8e-3, 0.9*3.8e-3, 1.2*3.8e-3, 1.5*3.8e-3, 1.7*3.8e-3], [0.9*3.8e-3, 1.3*3.8e-3, 1.7*3.8e-3, 1.9*3.8e-3, 2.25*3.8e-3], [1.1*3.8e-3, 1.7*3.8e-3, 2.1*3.8e-3, 2.3*3.8e-3, 2.5*3.8e-3]]"
+            et_off_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*2.1e-3, 0.4*2.1e-3, 0.8*2.1e-3, 0.68*2.1e-3, 0.9*2.1e-3], [0.65*2.1e-3, 0.9*2.1e-3, 1.2*2.1e-3, 1.5*2.1e-3, 1.7*2.1e-3], [0.9*2.1e-3, 1.3*2.1e-3, 1.7*2.1e-3, 1.9*2.1e-3, 2.25*2.1e-3], [1.1*2.1e-3, 1.7*2.1e-3, 2.1*2.1e-3, 2.3*2.1e-3, 2.5*2.1e-3]]"
+            ed_off_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*2.2e-3, 0.4*2.2e-3, 0.8*2.2e-3, 0.68*2.2e-3, 0.9*2.2e-3], [0.65*2.2e-3, 0.9*2.2e-3, 1.2*2.2e-3, 1.5*2.2e-3, 1.7*2.2e-3], [0.9*2.2e-3, 1.3*2.2e-3, 1.7*2.2e-3, 1.9*2.2e-3, 2.25*2.2e-3], [1.1*2.2e-3, 1.7*2.2e-3, 2.1*2.2e-3, 2.3*2.2e-3, 2.5*2.2e-3]]"
+            load_switching_data_from_xml = "Import losses data from xml files"
+            temp_estimation = "False"
+            thermal_networks_type = "Foster"
+            switch_Rth = "[0.159, 0.133, 0.120, 0.038]"
+            switch_Tth = "[1.1e-1, 1.56e-2, 1.35e-3, 1.51e-4]"
+            switch_Cth = "[0.0029, 0.0097, 0.1068, 0.8500]"
+            diode_Rth = "[0.159, 0.133, 0.120, 0.038]"
+            diode_Tth = "[1.1e-1, 1.56e-2, 1.35e-3, 1.51e-4]"
+            diode_Cth = "[0.0029, 0.0097, 0.1068, 0.8500]"
+            loss_exec_rate = "100e-6"
+            visualize_luts = "Visualize Lookup Tables"
+            show_monitoring = "False"
+            FSM_select = "converter"
+            _control_property = "all high"
+            pwm_enabling = "False"
+            pwm_enable_di = "13"
+            pwm_enable_inv = "active high"
+            dtv_flag_en = "True"
+            PESB_Optimization = "True"
+            dynamic_ac_voltage = "False"
+        }
+
+        "core/Single Phase TLM Core Coupling" {
+            type = "Inductive"
+            capacitance = "1e-06"
+            inductance = "1e-3"
+            embedded_components = "False"
+            ratio_type = "Automatic"
+            ratio = "0.1"
+            embedded_inductors_initial_current = "0.0"
+            embedded_capacitors_initial_voltage = "0.0"
+            enable_measurement = "False"
+        }
+
+        "core/Voltage Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        # The Schematic API is imported as 'mdl'
+        # To get the model file path, use 'mdl.get_model_file_path()'
+        # To print information to the console, use info()
+        
+        Tload = 0
+        Kt = 0.5
+        Ke = 0.3
+        Ra = 0.5
+        La = 1e-3
+        J = 0.02
+        b = 0.002
+        Rw = 0.3
+        v_min = 0.5
+        mi_min = 0.05
+        mi_max = 1.2
+        mi_default = 1
+        m = 1200
+        g = 9.81
+        Fz = m*g/4
+        K_load = 10
+        Gain_Rw_Tload = 0.3
+    ENDCODE
+}
