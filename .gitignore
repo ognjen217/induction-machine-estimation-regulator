@@ -1,0 +1,34 @@
+# Typhoon HIL generated target outputs
+* Target files/
+
+# Code Composer Studio / TI generated build outputs
+**/CPU1_RAM/
+**/CPU1_FLASH/
+**/Debug/
+**/Release/
+
+# Compiler and linker artifacts
+*.d
+*.obj
+*.out
+*.map
+*.opt
+*.cmd.genlibs
+*_linkInfo.xml
+
+# Generated makefiles
+makefile
+sources.mk
+objects.mk
+subdir_rules.mk
+subdir_vars.mk
+
+# clangd cache and generated compile database
+**/.clangd/.cache/
+compile_commands.json
+
+# Common temporary and backup files
+*.tmp
+*.temp
+*.bak
+*.log
