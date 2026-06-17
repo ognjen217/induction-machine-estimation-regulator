@@ -84,7 +84,7 @@ model "4-drive" {
             sig_output = "True"
         }
         [
-            position = 7116, 8004
+            position = 7112, 7960
             rotation = right
             size = 64, 48
         ]
@@ -563,7 +563,7 @@ model "4-drive" {
             component "core/Constant" En {
             }
             [
-                position = 7460, 7616
+                position = 7420, 7616
             ]
 
             component "core/Gain" Gain1 {
@@ -983,7 +983,7 @@ model "4-drive" {
             connect load Junction3 as Connection57
         }
         [
-            position = 8208, 7968
+            position = 8208, 7976
             size = 112, 64
         ]
 
@@ -1315,7 +1315,7 @@ model "4-drive" {
                 connect Gain.out Sum1.in1 as Connection110
             }
             [
-                position = 8536, 7740
+                position = 8536, 7744
                 size = 256, 192
             ]
 
@@ -1422,7 +1422,7 @@ model "4-drive" {
             connect load Junction3 as Connection53
         }
         [
-            position = 8472, 7960
+            position = 8472, 7968
             size = 112, 64
         ]
 
@@ -1562,13 +1562,13 @@ model "4-drive" {
                 component "core/Probe" mech_speed_fr {
                 }
                 [
-                    position = 8632, 8140
+                    position = 8800, 8132
                 ]
 
                 component "core/Probe" mech_angle_fr {
                 }
                 [
-                    position = 8632, 8208
+                    position = 8648, 8192
                 ]
 
                 component "core/Signal Controlled Voltage Source" Ebemf {
@@ -1720,7 +1720,7 @@ model "4-drive" {
                 ]
                 connect "Integrator Rollover1.out" mech_angle_fr.in as Connection90
                 [
-                    breakpoints = 8452, 8216
+                    breakpoints = 8508, 8256; 8508, 8216
                 ]
                 connect Sum1.in Junction11 as Connection94
                 connect Junction11 Kt.out as Connection95
@@ -1893,7 +1893,7 @@ model "4-drive" {
             inductance = "1e-6"
         }
         [
-            position = 8008, 8300
+            position = 8008, 8304
             size = 13, 256
         ]
 
@@ -2783,8 +2783,6 @@ if (slip_local > 0.001) {
             connect Junction8 Product4.in1 as Connection383
             connect Junction8 Product3.out as Connection384
             connect mu_scalefr.out Product3.in1 as Connection385
-            [
-            ]
             connect cicr_wheel2.out Junction9 as Connection386
             connect Junction9 v_wheel_RL.in as Connection387
             [
@@ -2810,8 +2808,6 @@ if (slip_local > 0.001) {
             connect Junction10 Product6.in1 as Connection397
             connect Junction10 Product5.out as Connection398
             connect mu_scalerl.out Product5.in1 as Connection399
-            [
-            ]
             connect cicr_wheel3.out Junction11 as Connection400
             connect Junction11 v_wheel_RR.in as Connection401
             [
@@ -2837,14 +2833,8 @@ if (slip_local > 0.001) {
             connect Junction12 Product8.in1 as Connection411
             connect Junction12 Product7.out as Connection412
             connect omega_FR cicr_wheel1.in as Connection414
-            [
-            ]
             connect cicr_wheel2.in omega_RL as Connection415
-            [
-            ]
             connect cicr_wheel3.in omega_RR as Connection416
-            [
-            ]
             connect "C function4.v_vehicle" Junction13 as Connection417
             connect "C function5.v_vehicle" Junction13 as Connection419
             [
@@ -2936,7 +2926,7 @@ if (slip_local > 0.001) {
             unit = ""
         }
         [
-            position = 7812, 7372
+            position = 7764, 7336
         ]
 
         component "core/Probe" omega_TEST {
@@ -3246,7 +3236,13 @@ if (slip_local > 0.001) {
             breakpoints = 8292, 8068
         ]
         connect "Core Coupling 3.b_in" Junction36 as Connection275
+        [
+            breakpoints = 8660, 8068; 8292, 8068
+        ]
         connect "Core Coupling 4.a_in" Junction33 as Connection277
+        [
+            breakpoints = 8672, 8204; 8320, 8204
+        ]
         connect Junction34 Junction37 as Connection279
         connect Junction37 Junction27 as Connection280
         connect "Core Coupling 4.b_out" Junction37 as Connection281
@@ -3297,40 +3293,40 @@ if (slip_local > 0.001) {
         "Battery2"
         "C2"
         "VCbat1"
-        "Junction27"
-        "Connection244"
         "Core Coupling 3"
-        "Connection263"
-        "Connection265"
-        "Junction34"
-        "Connection267"
-        "Connection269"
-        "Connection275"
         "Core Coupling 4"
-        "Connection277"
-        "Junction37"
-        "Connection279"
-        "Connection280"
-        "Connection281"
-        "Connection284"
         "Core Marker4"
-        "Junction39"
-        "Connection285"
-        "Connection287"
-        "Junction40"
-        "Connection289"
-        "Connection290"
-        "Junction41"
-        "Connection292"
-        "Connection294"
-        "Junction42"
-        "Connection295"
-        "Connection296"
-        "Connection297"
         "From5"
         "From6"
         "From7"
         "From8"
+        "Junction27"
+        "Junction34"
+        "Junction37"
+        "Junction39"
+        "Junction40"
+        "Junction41"
+        "Junction42"
+        "Connection244"
+        "Connection263"
+        "Connection265"
+        "Connection267"
+        "Connection269"
+        "Connection275"
+        "Connection277"
+        "Connection279"
+        "Connection280"
+        "Connection281"
+        "Connection284"
+        "Connection285"
+        "Connection287"
+        "Connection289"
+        "Connection290"
+        "Connection292"
+        "Connection294"
+        "Connection295"
+        "Connection296"
+        "Connection297"
     }
 
     default {
